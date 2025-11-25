@@ -5,7 +5,40 @@ import { useEffect, useRef, useState } from 'react';
 export function Hero() {
     const cloudsRef = useRef<HTMLDivElement>(null);
     const clusterRef = useRef<HTMLDivElement>(null);
+    const coinsRef = useRef<HTMLDivElement>(null);
     const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        // Generate spinning coins in an alternating/staggered pattern (like brickwork)
+        if (coinsRef.current) {
+            const heroWidth = window.innerWidth;
+            const heroHeight = window.innerHeight;
+            
+            const spacing = 80; // Distance between coins
+            const cols = Math.ceil(heroWidth / spacing) + 1;
+            const rows = Math.ceil(heroHeight / spacing) + 1;
+            
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const coin = document.createElement('div');
+                    coin.className = 'spinning-coin';
+                    
+                    // Staggered pattern: offset every other row by half the spacing
+                    const offsetX = (row % 2) * (spacing / 2);
+                    const x = (col * spacing) + offsetX;
+                    const y = row * spacing;
+                    
+                    coin.style.left = x + 'px';
+                    coin.style.top = y + 'px';
+                    
+                    // Randomize animation delay for variety
+                    coin.style.animationDelay = (Math.random() * 1.2) + 's';
+                    
+                    coinsRef.current.appendChild(coin);
+                }
+            }
+        }
+    }, []);
 
     useEffect(() => {
         // Generate MASSIVE cloud coverage that persists through entire page
@@ -86,6 +119,18 @@ export function Hero() {
     };
 
     useEffect(() => {
+        // Fade out coins on scroll
+        if (coinsRef.current) {
+            const coins = coinsRef.current.querySelectorAll('.spinning-coin');
+            // Fade out coins over first 150px of scroll (faster fade out)
+            const fadeProgress = Math.min(scrollY / 150, 1);
+            const opacity = Math.max(1 - fadeProgress, 0);
+            
+            coins.forEach((coin) => {
+                (coin as HTMLElement).style.opacity = opacity.toString();
+            });
+        }
+        
         // Staggered layer clearing: each layer moves at different scroll points
         if (clusterRef.current) {
             const clouds = clusterRef.current.querySelectorAll('.cluster-cloud');
@@ -131,6 +176,8 @@ export function Hero() {
 
     return (
         <section id="home" className="hero section">
+            {/* Spinning coins background */}
+            <div className="hero-coins-container" ref={coinsRef}></div>
             {/* Full overlay that fades on scroll - adapts to theme */}
             <div 
                 className="hero-overlay"
@@ -148,7 +195,7 @@ export function Hero() {
             />
             {/* Dense cloud layers that clear horizontally on scroll */}
             <div className="cloud-cluster" ref={clusterRef}></div>
-            <div className="hero-content" style={{ zIndex: 10, textAlign: 'center' }}>
+            <div className="hero-content" style={{ zIndex: 10, textAlign: 'center', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>
                 <h1
                     className="hero-title hero-title-3d"
                     onMouseEnter={handleTitleHover}
