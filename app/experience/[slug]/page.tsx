@@ -40,13 +40,10 @@ export default function ExperienceDetailPage({ params }: { params: { slug: strin
                 <div className="container" style={{ maxWidth: '900px' }}>
                     {/* Header */}
                     <div style={{ marginBottom: 'var(--space-8)' }}>
-                        <Link href="/experience" className="btn btn-outline" style={{ marginBottom: 'var(--space-4)', display: 'inline-block' }}>
-                            ← Back to Experience
-                        </Link>
                         <h1 style={{ marginBottom: 'var(--space-3)', color: 'var(--color-accent)' }}>
                             {experience.company}
                         </h1>
-                        <h2 style={{ marginBottom: 'var(--space-3)', fontSize: 'var(--text-xl)' }}>
+                        <h2 style={{ marginBottom: 'var(--space-3)', fontSize: 'var(--text-xl)', color: 'var(--color-accent)' }}>
                             {experience.role}
                         </h2>
                         <div style={{ display: 'flex', gap: 'var(--space-4)', marginBottom: 'var(--space-4)', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)' }}>

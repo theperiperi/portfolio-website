@@ -35,14 +35,9 @@ export default function HomePage() {
                         Work Experience
                     </h2>
                     <div className="timeline">
-                        {experiences.slice(0, 3).map((exp, index) => (
+                        {experiences.map((exp, index) => (
                             <ExperienceCard key={exp.slug} experience={exp} index={index} />
                         ))}
-                    </div>
-                    <div style={{ textAlign: 'center', marginTop: 'var(--space-6)' }}>
-                        <a href="/experience" className="btn btn-3d">
-                            View All Experience
-                        </a>
                     </div>
                 </div>
             </section>

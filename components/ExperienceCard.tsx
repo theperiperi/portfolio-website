@@ -47,6 +47,7 @@ export function ExperienceCard({ experience, index }: ExperienceCardProps) {
                     style={{
                         fontSize: 'var(--text-base)',
                         marginBottom: 'var(--space-2)',
+                        color: '#FFD700',
                     }}
                 >
                     {experience.role}

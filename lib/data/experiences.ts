@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
     {
         slug: 'google-swe-intern',
         company: 'Google',
-        logo: '/logos/google-logo.svg',
+        logo: '/logos/google-logo.png',
         role: 'SWE Intern',
         duration: 'May 2025 - August 2025',
         location: 'Bangalore, Onsite',

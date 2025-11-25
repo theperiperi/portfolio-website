@@ -11,6 +11,18 @@ export function Navigation() {
         return pathname.startsWith(path);
     };
 
+    const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+        // Only handle smooth scrolling if on homepage
+        if (pathname === '/') {
+            e.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        // If not on homepage, let the default link behavior work (navigate to /#section)
+    };
+
     return (
         <nav className="nav">
             <div className="nav-container">
@@ -36,22 +48,28 @@ export function Navigation() {
                     </li>
                     <li>
                         <Link
-                            href="/projects"
-                            className={`nav-link ${isActive('/projects') ? 'active' : ''}`}
+                            href="/#projects"
+                            className="nav-link"
+                            onClick={(e) => handleSectionClick(e, 'projects')}
                         >
                             Projects
                         </Link>
                     </li>
                     <li>
                         <Link
-                            href="/experience"
-                            className={`nav-link ${isActive('/experience') ? 'active' : ''}`}
+                            href="/#experience"
+                            className="nav-link"
+                            onClick={(e) => handleSectionClick(e, 'experience')}
                         >
                             Experience
                         </Link>
                     </li>
                     <li>
-                        <Link href="/#contact" className="nav-link">
+                        <Link 
+                            href="/#contact" 
+                            className="nav-link"
+                            onClick={(e) => handleSectionClick(e, 'contact')}
+                        >
                             Contact
                         </Link>
                     </li>

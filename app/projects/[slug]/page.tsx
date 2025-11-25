@@ -40,9 +40,6 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                 <div className="container" style={{ maxWidth: '900px' }}>
                     {/* Header */}
                     <div style={{ marginBottom: 'var(--space-8)' }}>
-                        <Link href="/projects" className="btn btn-outline" style={{ marginBottom: 'var(--space-4)', display: 'inline-block' }}>
-                            ← Back to Projects
-                        </Link>
                         <h1 style={{ marginBottom: 'var(--space-4)', color: 'var(--color-accent)' }}>
                             {project.title}
                         </h1>
@@ -70,25 +67,6 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                                 )}
                             </div>
                         )}
-                    </div>
-
-                    {/* Images */}
-                    <div style={{ marginBottom: 'var(--space-8)' }}>
-                        <h2 style={{ marginBottom: 'var(--space-4)' }}>Screenshots</h2>
-                        <div style={{ display: 'grid', gap: 'var(--space-4)' }}>
-                            {project.images.map((image, index) => (
-                                <img
-                                    key={index}
-                                    src={image}
-                                    alt={`${project.title} screenshot ${index + 1}`}
-                                    style={{
-                                        width: '100%',
-                                        borderRadius: 'var(--radius-md)',
-                                        border: '2px solid var(--color-border)',
-                                    }}
-                                />
-                            ))}
-                        </div>
                     </div>
 
                     {/* Full Description */}

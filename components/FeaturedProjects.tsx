@@ -33,10 +33,10 @@ export function FeaturedProjects() {
     };
 
     return (
-        <section className="section" style={{ paddingTop: 'var(--space-9)', paddingBottom: 'var(--space-9)' }}>
+        <section id="projects" className="section" style={{ paddingTop: 'var(--space-9)', paddingBottom: 'var(--space-9)' }}>
             <div className="container">
                 <h2 className="text-center" style={{ marginBottom: 'var(--space-8)' }}>
-                    Featured Projects
+                    Projects
                 </h2>
                 <div className="featured-projects-grid">
                     {featuredProjects.map((project, index) => (
@@ -83,11 +83,6 @@ export function FeaturedProjects() {
                             </div>
                         </div>
                     ))}
-                </div>
-                <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-                    <a href="/projects" className="btn btn-3d">
-                        View All Projects
-                    </a>
                 </div>
             </div>
         </section>
