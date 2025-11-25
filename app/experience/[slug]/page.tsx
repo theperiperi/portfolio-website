@@ -8,8 +8,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const experience = getExperienceBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const experience = getExperienceBySlug(slug);
 
     if (!experience) {
         return {
@@ -23,14 +24,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default function ExperienceDetailPage({ params }: { params: { slug: string } }) {
-    const experience = getExperienceBySlug(params.slug);
+export default async function ExperienceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const experience = getExperienceBySlug(slug);
 
     if (!experience) {
         notFound();
     }
 
-    const currentIndex = experiences.findIndex((e) => e.slug === params.slug);
+    const currentIndex = experiences.findIndex((e) => e.slug === slug);
     const prevExperience = currentIndex > 0 ? experiences[currentIndex - 1] : null;
     const nextExperience = currentIndex < experiences.length - 1 ? experiences[currentIndex + 1] : null;
 
