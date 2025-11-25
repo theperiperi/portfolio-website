@@ -44,7 +44,7 @@ export function MarioHUD() {
                 <div className="mario-xp-track">
                     <div 
                         className="mario-xp-fill"
-                        style={{ width: `${100 - scrollProgress}%` }}
+                        style={{ width: `${scrollProgress}%` }}
                     ></div>
                 </div>
             </div>
