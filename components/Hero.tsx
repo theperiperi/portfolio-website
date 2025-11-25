@@ -131,16 +131,15 @@ export function Hero() {
 
     return (
         <section id="home" className="hero section">
-            {/* Full white overlay that fades on scroll */}
+            {/* Full overlay that fades on scroll - adapts to theme */}
             <div 
-                className="hero-white-overlay"
+                className="hero-overlay"
                 style={{
                     position: 'fixed',
                     top: 0,
                     left: 0,
                     width: '100vw',
                     height: '100vh',
-                    backgroundColor: '#ffffff',
                     zIndex: 2,
                     opacity: scrollY === 0 ? 1 : Math.max(1 - (scrollY / 150), 0),
                     transition: 'opacity 0.1s ease-out',
