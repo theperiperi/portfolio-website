@@ -50,11 +50,12 @@ export function Hero() {
                     PRIYA SRIDHAR
                 </h1>
                 <p
-                    className="hero-subtitle"
+                    className="hero-subtitle hero-subtitle-enhanced"
                     style={{
                         fontSize: 'var(--text-base)',
-                        color: 'var(--color-text-muted)',
+                        color: 'var(--color-text)',
                         marginBottom: 'var(--space-6)',
+                        fontWeight: 'bold',
                     }}
                 >
                     Software Engineer | AI/ML Enthusiast | Full-Stack Developer
@@ -68,38 +69,18 @@ export function Hero() {
                     </a>
                 </div>
                 <style jsx>{`
-                    .hero-title-3d {
-                        text-shadow: 
-                            3px 3px 0 var(--color-accent),
-                            6px 6px 0 rgba(167, 139, 250, 0.5);
-                        transition: all 0.3s ease;
+                    .hero-subtitle-enhanced {
+                        text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+                        animation: glow-pulse 2s ease-in-out infinite;
                     }
                     
-                    .hero-title-3d:hover {
-                        text-shadow: 
-                            5px 5px 0 var(--color-accent),
-                            10px 10px 0 rgba(167, 139, 250, 0.5);
-                        transform: translate(-2px, -2px);
-                    }
-                    
-                    .btn-3d {
-                        position: relative;
-                        transition: all 0.2s ease;
-                        box-shadow: 
-                            3px 3px 0 var(--color-border),
-                            6px 6px 0 rgba(0, 0, 0, 0.1);
-                    }
-                    
-                    .btn-3d:hover {
-                        transform: translate(3px, 3px);
-                        box-shadow: 
-                            0px 0px 0 var(--color-border),
-                            0px 0px 0 rgba(0, 0, 0, 0.1);
-                    }
-                    
-                    .btn-3d:active {
-                        transform: translate(6px, 6px);
-                        box-shadow: none;
+                    @keyframes glow-pulse {
+                        0%, 100% {
+                            text-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+                        }
+                        50% {
+                            text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+                        }
                     }
                 `}</style>
             </div>
