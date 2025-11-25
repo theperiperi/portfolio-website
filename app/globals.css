@@ -193,10 +193,9 @@ a:hover {
 }
 
 .btn:hover {
-    background-color: var(--color-accent-hover);
-    border-color: var(--color-accent-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 .btn-outline {
@@ -209,6 +208,63 @@ a:hover {
     color: var(--color-bg);
 }
 
+/* ===== 3D BUTTON EFFECT ===== */
+.btn-3d {
+    position: relative;
+    transition: all 0.2s ease;
+    box-shadow: 
+        4px 4px 0 var(--color-border),
+        8px 8px 0 rgba(167, 139, 250, 0.3);
+}
+
+.btn-3d:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(167, 139, 250, 0.3);
+}
+
+.btn-3d:active {
+    transform: translate(8px, 8px);
+    box-shadow: none;
+}
+
+.btn-outline.btn-3d {
+    box-shadow: 
+        4px 4px 0 var(--color-accent),
+        8px 8px 0 rgba(167, 139, 250, 0.2);
+}
+
+.btn-outline.btn-3d:hover {
+    box-shadow: 
+        0px 0px 0 var(--color-accent),
+        0px 0px 0 rgba(167, 139, 250, 0.2);
+}
+
+[data-theme="dark"] .btn-3d {
+    box-shadow: 
+        4px 4px 0 var(--color-border),
+        8px 8px 0 rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="dark"] .btn-3d:hover {
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="dark"] .btn-outline.btn-3d {
+    box-shadow: 
+        4px 4px 0 var(--color-accent),
+        8px 8px 0 rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="dark"] .btn-outline.btn-3d:hover {
+    box-shadow: 
+        0px 0px 0 var(--color-accent),
+        0px 0px 0 rgba(0, 255, 0, 0.2);
+}
+
 /* ===== CARD STYLES ===== */
 .card {
     background-color: var(--color-surface);
@@ -216,12 +272,21 @@ a:hover {
     border-radius: var(--radius-md);
     padding: var(--space-5);
     transition: all var(--duration-normal) var(--ease-smooth);
+    position: relative;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 
+        4px 4px 0 var(--color-border),
+        8px 8px 0 rgba(167, 139, 250, 0.2);
     border-color: var(--color-accent);
+}
+
+[data-theme="dark"] .card:hover {
+    box-shadow: 
+        4px 4px 0 var(--color-border),
+        8px 8px 0 rgba(0, 255, 0, 0.2);
 }
 
 /* ===== NAVIGATION ===== */
@@ -512,6 +577,37 @@ a:hover {
     padding-top: 80px;
 }
 
+.hero-title-3d {
+    text-shadow: 
+        3px 3px 0 var(--color-accent),
+        6px 6px 0 rgba(167, 139, 250, 0.5),
+        9px 9px 0 rgba(167, 139, 250, 0.2);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.hero-title-3d:hover {
+    text-shadow: 
+        5px 5px 0 var(--color-accent),
+        10px 10px 0 rgba(167, 139, 250, 0.5),
+        15px 15px 0 rgba(167, 139, 250, 0.2);
+    transform: translate(-3px, -3px);
+}
+
+[data-theme="dark"] .hero-title-3d {
+    text-shadow: 
+        3px 3px 0 var(--color-accent),
+        6px 6px 0 rgba(0, 255, 0, 0.5),
+        9px 9px 0 rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="dark"] .hero-title-3d:hover {
+    text-shadow: 
+        5px 5px 0 var(--color-accent),
+        10px 10px 0 rgba(0, 255, 0, 0.5),
+        15px 15px 0 rgba(0, 255, 0, 0.2);
+}
+
 .particles {
     position: absolute;
     top: 0;
@@ -529,6 +625,99 @@ a:hover {
     background-color: var(--color-accent);
     opacity: 0.3;
     animation: float 6s ease-in-out infinite;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-6);
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-smooth);
+    color: var(--color-accent);
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.theme-toggle-3d {
+    box-shadow: 
+        3px 3px 0 var(--color-border),
+        6px 6px 0 rgba(167, 139, 250, 0.2);
+}
+
+.theme-toggle-3d:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(167, 139, 250, 0.2);
+}
+
+.theme-toggle-3d:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+[data-theme="dark"] .theme-toggle-3d {
+    box-shadow: 
+        3px 3px 0 var(--color-border),
+        6px 6px 0 rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle-3d:hover {
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(0, 255, 0, 0.2);
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== SOCIAL LINKS 3D ===== */
+.social-link-3d {
+    position: relative;
+    box-shadow: 
+        3px 3px 0 var(--color-border),
+        6px 6px 0 rgba(167, 139, 250, 0.2);
+}
+
+.social-link-3d:hover {
+    transform: translate(3px, 3px) !important;
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(167, 139, 250, 0.2);
+    border-color: var(--color-accent) !important;
+}
+
+.social-link-3d:active {
+    transform: translate(6px, 6px) !important;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .social-link-3d {
+    box-shadow: 
+        3px 3px 0 var(--color-border),
+        6px 6px 0 rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="dark"] .social-link-3d:hover {
+    box-shadow: 
+        0px 0px 0 var(--color-border),
+        0px 0px 0 rgba(0, 255, 0, 0.2);
 }
 
 /* ===== ANIMATIONS ===== */

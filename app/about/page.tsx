@@ -29,24 +29,22 @@ export default function AboutPage() {
                                 >
                                     👨‍💻
                                 </div>
-                                <h2 style={{ marginBottom: 'var(--space-3)' }}>Software Developer</h2>
-                                <p className="text-muted">Passionate about creating amazing digital experiences</p>
+                                <h2 style={{ marginBottom: 'var(--space-3)' }}>Priya Sridhar</h2>
+                                <p className="text-muted">Software Engineer | AI/ML Enthusiast | Full-Stack Developer</p>
                             </div>
 
                             <div style={{ fontSize: 'var(--text-sm)', lineHeight: '2' }}>
                                 <p style={{ marginBottom: 'var(--space-4)' }}>
-                                    Hello! I'm a software developer with a passion for building beautiful, functional,
-                                    and user-friendly applications. I love working with modern web technologies and
-                                    creating pixel-perfect designs that bring ideas to life.
+                                    Hello! I'm Priya Sridhar, a B.Tech student in Artificial Intelligence & Data Science at Shiv Nadar University, Chennai (CGPA: 8.5). I'm passionate about building innovative solutions that combine AI/ML with full-stack development.
                                 </p>
                                 <p style={{ marginBottom: 'var(--space-4)' }}>
-                                    My journey in software development has been driven by curiosity and a desire to
-                                    solve complex problems. I believe in writing clean, maintainable code and creating
-                                    experiences that users love.
+                                    I've had the privilege of working as a Software Engineering Intern at Google on the YouTube Creator Support Quality team, where I reduced user dissatisfaction metrics by 90%. I've also contributed to startups like Archways AI and Codincity, working on cutting-edge AI/ML projects.
+                                </p>
+                                <p style={{ marginBottom: 'var(--space-4)' }}>
+                                    As Vertical Lead of the Coding Club and President of the Competitive Programming team at my university, I'm deeply involved in the tech community. I'm also a founding member of Delta Hackathon Team and have won multiple hackathons including 2nd place at IIT Madras Shaastra.
                                 </p>
                                 <p>
-                                    When I'm not coding, you can find me exploring new technologies, contributing to
-                                    open-source projects, or sharing knowledge with the developer community.
+                                    When I'm not coding, you can find me performing stand-up comedy, playing multiple instruments in my college band, or solving competitive programming challenges. I'm a Knight on LeetCode (Top 5% worldwide) and have completed Advent of Code 2023 & 2024.
                                 </p>
                             </div>
                         </div>
@@ -62,14 +60,22 @@ export default function AboutPage() {
                                 }}
                             >
                                 {[
+                                    'Python',
                                     'JavaScript',
                                     'TypeScript',
                                     'React',
                                     'Next.js',
                                     'Node.js',
-                                    'CSS/SCSS',
+                                    'Machine Learning',
+                                    'LangChain',
+                                    'DSPy',
+                                    'Django',
+                                    'Flask',
+                                    'SQL',
+                                    'Tailwind CSS',
                                     'Git',
-                                    'UI/UX Design',
+                                    'LlamaIndex',
+                                    'Computer Vision',
                                 ].map((skill) => (
                                     <div
                                         key={skill}
@@ -101,9 +107,11 @@ export default function AboutPage() {
                                 }}
                             >
                                 {[
-                                    { emoji: '🎮', title: 'Gaming', desc: 'Retro & modern games' },
-                                    { emoji: '🎨', title: 'Design', desc: 'UI/UX & pixel art' },
-                                    { emoji: '📚', title: 'Learning', desc: 'New tech & frameworks' },
+                                    { emoji: '💻', title: 'Competitive Programming', desc: 'LeetCode Knight, CodeChef 3★' },
+                                    { emoji: '🎭', title: 'Stand-up Comedy', desc: 'President, Comedy Club' },
+                                    { emoji: '🎸', title: 'Music', desc: 'Multi-instrumentalist in college band' },
+                                    { emoji: '🏆', title: 'Hackathons', desc: 'Multiple wins & finalist positions' },
+                                    { emoji: '👥', title: 'Mentoring', desc: 'CodessCafe, AlgoZenith, GFG' },
                                     { emoji: '🌐', title: 'Open Source', desc: 'Contributing to projects' },
                                 ].map((interest) => (
                                     <div

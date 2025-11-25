@@ -24,7 +24,7 @@ export default function HomePage() {
                         ))}
                     </div>
                     <div style={{ textAlign: 'center', marginTop: 'var(--space-6)' }}>
-                        <a href="/experience" className="btn">
+                        <a href="/experience" className="btn btn-3d">
                             View All Experience
                         </a>
                     </div>
@@ -47,10 +47,10 @@ export default function HomePage() {
                         }}
                     >
                         <a
-                            href="https://github.com"
+                            href="https://github.com/theperiperi"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="social-link"
+                            className="social-link social-link-3d"
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -74,10 +74,10 @@ export default function HomePage() {
                             </span>
                         </a>
                         <a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/in/priyadharshini-sridhar/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="social-link"
+                            className="social-link social-link-3d"
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -101,8 +101,8 @@ export default function HomePage() {
                             </span>
                         </a>
                         <a
-                            href="mailto:hello@developer.com"
-                            className="social-link"
+                            href="mailto:priyasridhar101@gmail.com"
+                            className="social-link social-link-3d"
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',

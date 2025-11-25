@@ -15,7 +15,7 @@ export function Navigation() {
         <nav className="nav">
             <div className="nav-container">
                 <Link href="/" className="nav-logo">
-                    DEV
+                    PS
                 </Link>
                 <ul className="nav-menu">
                     <li>
