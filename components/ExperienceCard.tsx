@@ -67,7 +67,7 @@ export function ExperienceCard({ experience, index }: ExperienceCardProps) {
                         lineHeight: 1.6,
                     }}
                 >
-                    {experience.description}
+                    {experience.description} ...read more
                 </p>
             </div>
         </div>

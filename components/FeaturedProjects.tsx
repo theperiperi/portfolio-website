@@ -71,7 +71,7 @@ export function FeaturedProjects() {
                                         {project.title}
                                     </h3>
                                 </div>
-                                <p className="featured-project-description">{project.description}</p>
+                                <p className="featured-project-description">{project.description} ...read more</p>
                                 <div className="featured-project-tags">
                                     {project.tags.slice(0, 3).map((tag) => (
                                         <span key={tag} className="featured-project-tag">
