@@ -40,10 +40,10 @@ export function Navigation() {
                     </li>
                     <li>
                         <Link
-                            href="/about"
-                            className={`nav-link ${isActive('/about') ? 'active' : ''}`}
+                            href="/nerd-wall"
+                            className={`nav-link ${isActive('/nerd-wall') ? 'active' : ''}`}
                         >
-                            About
+                            Nerd Wall
                         </Link>
                     </li>
                     <li>
