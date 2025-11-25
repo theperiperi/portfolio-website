@@ -10,10 +10,26 @@ export default function HomePage() {
             <Hero />
 
             {/* Featured Projects */}
-            <FeaturedProjects />
+            <div style={{ position: 'relative' }}>
+                <FeaturedProjects />
+                {/* Star */}
+                <div className="mario-star" style={{
+                    top: '180px',
+                    right: '15%',
+                }}></div>
+            </div>
 
             {/* Experience Preview */}
-            <section id="experience" className="section">
+            <section id="experience" className="section" style={{ position: 'relative' }}>
+                {/* Stars */}
+                <div className="mario-star" style={{
+                    top: '200px',
+                    right: '10%',
+                }}></div>
+                <div className="mario-star" style={{
+                    bottom: '180px',
+                    right: '18%',
+                }}></div>
                 <div className="container">
                     <h2 className="text-center" style={{ marginBottom: 'var(--space-6)' }}>
                         Work Experience
@@ -32,7 +48,20 @@ export default function HomePage() {
             </section>
 
             {/* Contact/Social Section */}
-            <section id="contact" className="section">
+            <section id="contact" className="section" style={{ position: 'relative' }}>
+                {/* Stars - more balanced */}
+                <div className="mario-star" style={{
+                    top: '250px',
+                    left: '15%',
+                }}></div>
+                <div className="mario-star" style={{
+                    bottom: '150px',
+                    right: '12%',
+                }}></div>
+                <div className="mario-star" style={{
+                    bottom: '200px',
+                    left: '25%',
+                }}></div>
                 <div className="container">
                     <h2 className="text-center" style={{ marginBottom: 'var(--space-6)' }}>
                         Connect With Me

@@ -27,7 +27,7 @@ export default function AboutPage() {
                                         fontSize: 'var(--text-4xl)',
                                     }}
                                 >
-                                    👨‍💻
+                                    🍄
                                 </div>
                                 <h2 style={{ marginBottom: 'var(--space-3)' }}>Priya Sridhar</h2>
                                 <p className="text-muted">Software Engineer | AI/ML Enthusiast | Full-Stack Developer</p>

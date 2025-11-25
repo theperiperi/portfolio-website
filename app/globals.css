@@ -1,19 +1,20 @@
 :root {
-    /* ===== LIGHT THEME (Vibrant Pastel) ===== */
-    --color-bg: #faf5ff;
+    /* ===== LIGHT THEME (Mario Blue Sky) ===== */
+    --color-bg: #5c94fc;
     --color-surface: #ffffff;
     --color-text: #1a1a2e;
-    --color-text-muted: #4a4a6a;
-    --color-accent: #7c3aed;
-    --color-accent-hover: #6d28d9;
-    --color-border: #c4b5fd;
+    --color-text-muted: #2d4a7c;
+    --color-accent: #00a651;
+    --color-accent-hover: #008741;
+    --color-border: #ffd700;
 
-    /* Vibrant palette */
-    --color-lavender: #ddd6fe;
-    --color-mint: #6ee7b7;
-    --color-peach: #fbbf24;
-    --color-sky: #60a5fa;
-    --color-rose: #f472b6;
+    /* Mario palette */
+    --color-mario-green: #00a651;
+    --color-mario-blue: #5c94fc;
+    --color-mario-yellow: #ffd700;
+    --color-coin-gold: #ffb700;
+    --color-brick-orange: #d87830;
+    --color-brick-brown: #b86028;
 
     /* Spacing scale (4px base) */
     --space-1: 4px;
@@ -66,16 +67,17 @@
     --color-surface: #1a1a1a;
     --color-text: #ffffff;
     --color-text-muted: #999999;
-    --color-accent: #00ff00;
-    --color-accent-hover: #00cc00;
+    --color-accent: #00a651;
+    --color-accent-hover: #008741;
     --color-border: #333333;
 
-    /* Monochrome palette */
-    --color-lavender: #cccccc;
-    --color-mint: #00ff00;
-    --color-peach: #ffffff;
-    --color-sky: #aaaaaa;
-    --color-rose: #eeeeee;
+    /* Dark theme palette */
+    --color-mario-green: #00a651;
+    --color-mario-blue: #5c94fc;
+    --color-mario-yellow: #ffd700;
+    --color-coin-gold: #ffb700;
+    --color-brick-orange: #d87830;
+    --color-brick-brown: #b86028;
 
     --shadow-sm: 0 2px 4px rgba(255, 255, 255, 0.05);
     --shadow-md: 0 4px 8px rgba(255, 255, 255, 0.08);
@@ -97,7 +99,7 @@ html {
 
 body {
     font-family: 'Press Start 2P', 'Courier New', monospace;
-    background: linear-gradient(135deg, var(--color-bg) 0%, #f3e8ff 50%, var(--color-bg) 100%);
+    background: linear-gradient(180deg, #5c94fc 0%, #89b5ff 100%);
     background-attachment: fixed;
     color: var(--color-text);
     line-height: 1.6;
@@ -114,9 +116,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(124, 58, 237, 0.03) 2px, rgba(124, 58, 237, 0.03) 4px),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(124, 58, 237, 0.03) 2px, rgba(124, 58, 237, 0.03) 4px);
+    background-image: none;
     pointer-events: none;
     z-index: 1;
 }
@@ -126,14 +126,406 @@ body > * {
     z-index: 2;
 }
 
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            #8b4513 0px,
+            #8b4513 60px,
+            #000000 60px,
+            #000000 64px,
+            #a0522d 64px,
+            #a0522d 124px,
+            #000000 124px,
+            #000000 128px
+        );
+    border-top: 4px solid #000000;
+    box-shadow: 
+        inset 0 4px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -4px 0 rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Pixel-perfect pipe anchored to bottom right */
+.bottom-pipe {
+    position: fixed;
+    bottom: 0;
+    right: 40px;
+    width: 96px;
+    height: 280px;
+    z-index: 999;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.bottom-pipe::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #00a651;
+    box-shadow:
+        /* Pipe rim top */
+        0 0 0 #000000,
+        8px 0 0 #000000,
+        16px 0 0 #000000,
+        24px 0 0 #000000,
+        32px 0 0 #000000,
+        40px 0 0 #000000,
+        48px 0 0 #000000,
+        56px 0 0 #000000,
+        64px 0 0 #000000,
+        72px 0 0 #000000,
+        80px 0 0 #000000,
+        88px 0 0 #000000,
+        /* Rim */
+        0 8px 0 #000000,
+        8px 8px 0 #00a651,
+        16px 8px 0 #00a651,
+        24px 8px 0 #00a651,
+        32px 8px 0 #00a651,
+        40px 8px 0 #00a651,
+        48px 8px 0 #00a651,
+        56px 8px 0 #00a651,
+        64px 8px 0 #00a651,
+        72px 8px 0 #00a651,
+        80px 8px 0 #00a651,
+        88px 8px 0 #000000,
+        0 16px 0 #000000,
+        8px 16px 0 #00a651,
+        16px 16px 0 #00d164,
+        24px 16px 0 #00d164,
+        32px 16px 0 #00d164,
+        40px 16px 0 #00d164,
+        48px 16px 0 #00d164,
+        56px 16px 0 #00d164,
+        64px 16px 0 #00d164,
+        72px 16px 0 #00d164,
+        80px 16px 0 #00a651,
+        88px 16px 0 #000000,
+        0 24px 0 #000000,
+        8px 24px 0 #00a651,
+        16px 24px 0 #00d164,
+        24px 24px 0 #00d164,
+        32px 24px 0 #00d164,
+        40px 24px 0 #00d164,
+        48px 24px 0 #00d164,
+        56px 24px 0 #00d164,
+        64px 24px 0 #00d164,
+        72px 24px 0 #00d164,
+        80px 24px 0 #00a651,
+        88px 24px 0 #000000,
+        /* Pipe body */
+        16px 32px 0 #000000,
+        24px 32px 0 #00a651,
+        32px 32px 0 #00a651,
+        40px 32px 0 #00a651,
+        48px 32px 0 #00a651,
+        56px 32px 0 #00a651,
+        64px 32px 0 #00a651,
+        72px 32px 0 #00a651,
+        80px 32px 0 #000000,
+        16px 40px 0 #000000,
+        24px 40px 0 #00a651,
+        32px 40px 0 #00d164,
+        40px 40px 0 #00d164,
+        48px 40px 0 #00d164,
+        56px 40px 0 #00d164,
+        64px 40px 0 #00d164,
+        72px 40px 0 #00a651,
+        80px 40px 0 #000000,
+        16px 48px 0 #000000,
+        24px 48px 0 #00a651,
+        32px 48px 0 #00d164,
+        40px 48px 0 #00d164,
+        48px 48px 0 #00d164,
+        56px 48px 0 #00d164,
+        64px 48px 0 #00d164,
+        72px 48px 0 #00a651,
+        80px 48px 0 #000000,
+        16px 56px 0 #000000,
+        24px 56px 0 #00a651,
+        32px 56px 0 #00d164,
+        40px 56px 0 #00d164,
+        48px 56px 0 #00d164,
+        56px 56px 0 #00d164,
+        64px 56px 0 #00d164,
+        72px 56px 0 #00a651,
+        80px 56px 0 #000000,
+        /* Extended pipe body to reach bottom */
+        16px 64px 0 #000000,
+        24px 64px 0 #00a651,
+        32px 64px 0 #00d164,
+        40px 64px 0 #00d164,
+        48px 64px 0 #00d164,
+        56px 64px 0 #00d164,
+        64px 64px 0 #00d164,
+        72px 64px 0 #00a651,
+        80px 64px 0 #000000,
+        16px 72px 0 #000000,
+        24px 72px 0 #00a651,
+        32px 72px 0 #00d164,
+        40px 72px 0 #00d164,
+        48px 72px 0 #00d164,
+        56px 72px 0 #00d164,
+        64px 72px 0 #00d164,
+        72px 72px 0 #00a651,
+        80px 72px 0 #000000,
+        16px 80px 0 #000000,
+        24px 80px 0 #00a651,
+        32px 80px 0 #00d164,
+        40px 80px 0 #00d164,
+        48px 80px 0 #00d164,
+        56px 80px 0 #00d164,
+        64px 80px 0 #00d164,
+        72px 80px 0 #00a651,
+        80px 80px 0 #000000,
+        16px 88px 0 #000000,
+        24px 88px 0 #00a651,
+        32px 88px 0 #00d164,
+        40px 88px 0 #00d164,
+        48px 88px 0 #00d164,
+        56px 88px 0 #00d164,
+        64px 88px 0 #00d164,
+        72px 88px 0 #00a651,
+        80px 88px 0 #000000,
+        16px 96px 0 #000000,
+        24px 96px 0 #00a651,
+        32px 96px 0 #00d164,
+        40px 96px 0 #00d164,
+        48px 96px 0 #00d164,
+        56px 96px 0 #00d164,
+        64px 96px 0 #00d164,
+        72px 96px 0 #00a651,
+        80px 96px 0 #000000,
+        16px 104px 0 #000000,
+        24px 104px 0 #00a651,
+        32px 104px 0 #00d164,
+        40px 104px 0 #00d164,
+        48px 104px 0 #00d164,
+        56px 104px 0 #00d164,
+        64px 104px 0 #00d164,
+        72px 104px 0 #00a651,
+        80px 104px 0 #000000,
+        16px 112px 0 #000000,
+        24px 112px 0 #00a651,
+        32px 112px 0 #00d164,
+        40px 112px 0 #00d164,
+        48px 112px 0 #00d164,
+        56px 112px 0 #00d164,
+        64px 112px 0 #00d164,
+        72px 112px 0 #00a651,
+        80px 112px 0 #000000,
+        16px 120px 0 #000000,
+        24px 120px 0 #00a651,
+        32px 120px 0 #00d164,
+        40px 120px 0 #00d164,
+        48px 120px 0 #00d164,
+        56px 120px 0 #00d164,
+        64px 120px 0 #00d164,
+        72px 120px 0 #00a651,
+        80px 120px 0 #000000,
+        16px 128px 0 #000000,
+        24px 128px 0 #00a651,
+        32px 128px 0 #00d164,
+        40px 128px 0 #00d164,
+        48px 128px 0 #00d164,
+        56px 128px 0 #00d164,
+        64px 128px 0 #00d164,
+        72px 128px 0 #00a651,
+        80px 128px 0 #000000,
+        16px 136px 0 #000000,
+        24px 136px 0 #00a651,
+        32px 136px 0 #00d164,
+        40px 136px 0 #00d164,
+        48px 136px 0 #00d164,
+        56px 136px 0 #00d164,
+        64px 136px 0 #00d164,
+        72px 136px 0 #00a651,
+        80px 136px 0 #000000,
+        16px 144px 0 #000000,
+        24px 144px 0 #00a651,
+        32px 144px 0 #00d164,
+        40px 144px 0 #00d164,
+        48px 144px 0 #00d164,
+        56px 144px 0 #00d164,
+        64px 144px 0 #00d164,
+        72px 144px 0 #00a651,
+        80px 144px 0 #000000,
+        16px 152px 0 #000000,
+        24px 152px 0 #00a651,
+        32px 152px 0 #00d164,
+        40px 152px 0 #00d164,
+        48px 152px 0 #00d164,
+        56px 152px 0 #00d164,
+        64px 152px 0 #00d164,
+        72px 152px 0 #00a651,
+        80px 152px 0 #000000,
+        16px 160px 0 #000000,
+        24px 160px 0 #00a651,
+        32px 160px 0 #00d164,
+        40px 160px 0 #00d164,
+        48px 160px 0 #00d164,
+        56px 160px 0 #00d164,
+        64px 160px 0 #00d164,
+        72px 160px 0 #00a651,
+        80px 160px 0 #000000,
+        16px 168px 0 #000000,
+        24px 168px 0 #00a651,
+        32px 168px 0 #00d164,
+        40px 168px 0 #00d164,
+        48px 168px 0 #00d164,
+        56px 168px 0 #00d164,
+        64px 168px 0 #00d164,
+        72px 168px 0 #00a651,
+        80px 168px 0 #000000,
+        16px 176px 0 #000000,
+        24px 176px 0 #00a651,
+        32px 176px 0 #00d164,
+        40px 176px 0 #00d164,
+        48px 176px 0 #00d164,
+        56px 176px 0 #00d164,
+        64px 176px 0 #00d164,
+        72px 176px 0 #00a651,
+        80px 176px 0 #000000,
+        16px 184px 0 #000000,
+        24px 184px 0 #00a651,
+        32px 184px 0 #00d164,
+        40px 184px 0 #00d164,
+        48px 184px 0 #00d164,
+        56px 184px 0 #00d164,
+        64px 184px 0 #00d164,
+        72px 184px 0 #00a651,
+        80px 184px 0 #000000,
+        16px 192px 0 #000000,
+        24px 192px 0 #00a651,
+        32px 192px 0 #00d164,
+        40px 192px 0 #00d164,
+        48px 192px 0 #00d164,
+        56px 192px 0 #00d164,
+        64px 192px 0 #00d164,
+        72px 192px 0 #00a651,
+        80px 192px 0 #000000,
+        16px 200px 0 #000000,
+        24px 200px 0 #00a651,
+        32px 200px 0 #00d164,
+        40px 200px 0 #00d164,
+        48px 200px 0 #00d164,
+        56px 200px 0 #00d164,
+        64px 200px 0 #00d164,
+        72px 200px 0 #00a651,
+        80px 200px 0 #000000,
+        16px 208px 0 #000000,
+        24px 208px 0 #00a651,
+        32px 208px 0 #00d164,
+        40px 208px 0 #00d164,
+        48px 208px 0 #00d164,
+        56px 208px 0 #00d164,
+        64px 208px 0 #00d164,
+        72px 208px 0 #00a651,
+        80px 208px 0 #000000,
+        16px 216px 0 #000000,
+        24px 216px 0 #00a651,
+        32px 216px 0 #00d164,
+        40px 216px 0 #00d164,
+        48px 216px 0 #00d164,
+        56px 216px 0 #00d164,
+        64px 216px 0 #00d164,
+        72px 216px 0 #00a651,
+        80px 216px 0 #000000,
+        16px 224px 0 #000000,
+        24px 224px 0 #00a651,
+        32px 224px 0 #00d164,
+        40px 224px 0 #00d164,
+        48px 224px 0 #00d164,
+        56px 224px 0 #00d164,
+        64px 224px 0 #00d164,
+        72px 224px 0 #00a651,
+        80px 224px 0 #000000,
+        16px 232px 0 #000000,
+        24px 232px 0 #00a651,
+        32px 232px 0 #00d164,
+        40px 232px 0 #00d164,
+        48px 232px 0 #00d164,
+        56px 232px 0 #00d164,
+        64px 232px 0 #00d164,
+        72px 232px 0 #00a651,
+        80px 232px 0 #000000,
+        16px 240px 0 #000000,
+        24px 240px 0 #00a651,
+        32px 240px 0 #00d164,
+        40px 240px 0 #00d164,
+        48px 240px 0 #00d164,
+        56px 240px 0 #00d164,
+        64px 240px 0 #00d164,
+        72px 240px 0 #00a651,
+        80px 240px 0 #000000,
+        16px 248px 0 #000000,
+        24px 248px 0 #00a651,
+        32px 248px 0 #00d164,
+        40px 248px 0 #00d164,
+        48px 248px 0 #00d164,
+        56px 248px 0 #00d164,
+        64px 248px 0 #00d164,
+        72px 248px 0 #00a651,
+        80px 248px 0 #000000,
+        16px 256px 0 #000000,
+        24px 256px 0 #00a651,
+        32px 256px 0 #00d164,
+        40px 256px 0 #00d164,
+        48px 256px 0 #00d164,
+        56px 256px 0 #00d164,
+        64px 256px 0 #00d164,
+        72px 256px 0 #00a651,
+        80px 256px 0 #000000,
+        16px 264px 0 #000000,
+        24px 264px 0 #00a651,
+        32px 264px 0 #00d164,
+        40px 264px 0 #00d164,
+        48px 264px 0 #00d164,
+        56px 264px 0 #00d164,
+        64px 264px 0 #00d164,
+        72px 264px 0 #00a651,
+        80px 264px 0 #000000,
+        16px 272px 0 #000000,
+        24px 272px 0 #00a651,
+        32px 272px 0 #00d164,
+        40px 272px 0 #00d164,
+        48px 272px 0 #00d164,
+        56px 272px 0 #00d164,
+        64px 272px 0 #00d164,
+        72px 272px 0 #00a651,
+        80px 272px 0 #000000;
+}
+
+[data-theme="dark"] body::after {
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            #4a2511 0px,
+            #4a2511 60px,
+            #000000 60px,
+            #000000 64px,
+            #5c2e16 64px,
+            #5c2e16 124px,
+            #000000 124px,
+            #000000 128px
+        );
+}
+
 [data-theme="dark"] body {
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+    background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
 }
 
 [data-theme="dark"] body::before {
-    background-image: 
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.05) 2px, rgba(0, 255, 0, 0.05) 4px),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 255, 0, 0.05) 2px, rgba(0, 255, 0, 0.05) 4px);
+    background-image: none;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -150,33 +542,38 @@ h6 {
 
 h1 {
     font-size: var(--text-4xl);
+    text-shadow: 
+        3px 3px 0 #000000,
+        5px 5px 0 rgba(0, 0, 0, 0.3);
+    color: #ffffff;
 }
 
 h2 {
     font-size: var(--text-3xl);
-    text-shadow: 2px 2px 0 var(--color-accent);
+    text-shadow: 
+        3px 3px 0 #000000,
+        5px 5px 0 rgba(0, 0, 0, 0.3);
     display: inline-block;
     padding-bottom: var(--space-2);
+    color: #ffffff;
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-mint), var(--color-rose));
-    border-radius: 2px;
-}
+/* Remove rainbow underlines */
 
 h3 {
     font-size: var(--text-2xl);
-    color: var(--color-accent);
+    color: #ffffff;
+    text-shadow: 
+        2px 2px 0 #000000,
+        4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 h4 {
     font-size: var(--text-xl);
+    text-shadow: 
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.2);
+    color: #ffffff;
 }
 
 h5 {
@@ -215,7 +612,27 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Brick wall removed - keeping normal background */
 
 .text-center {
     text-align: center;
@@ -230,29 +647,39 @@ a:hover {
     display: inline-block;
     padding: var(--space-3) var(--space-5);
     background-color: var(--color-accent);
-    color: var(--color-bg);
-    border: 2px solid var(--color-accent);
+    color: #ffffff;
+    border: 3px solid #000000;
     border-radius: var(--radius-sm);
     font-family: inherit;
     font-size: var(--text-sm);
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-smooth);
+    text-shadow: 
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 .btn:hover {
-    background-color: transparent;
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+    background-color: var(--color-accent-hover);
+    color: #ffffff;
+    border-color: #000000;
+    transform: scale(1.05);
 }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: #ffffff;
     color: var(--color-accent);
+    text-shadow: 
+        1px 1px 0 rgba(0, 0, 0, 0.2),
+        2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-outline:hover {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
+    background-color: var(--color-mario-yellow);
+    color: #000000;
+    text-shadow: 
+        1px 1px 0 rgba(0, 0, 0, 0.2),
+        2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* ===== 3D BUTTON EFFECT ===== */
@@ -260,9 +687,10 @@ a:hover {
     position: relative;
     transition: all 0.2s ease;
     box-shadow: 
-        4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(124, 58, 237, 0.4);
+        4px 4px 0 #000000,
+        6px 6px 0 rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    border: 3px solid #000000;
 }
 
 .btn-3d::before {
@@ -272,7 +700,7 @@ a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: left 0.5s ease;
 }
 
@@ -281,62 +709,66 @@ a:hover {
 }
 
 .btn-3d:hover {
-    transform: translate(4px, 4px);
+    transform: translate(2px, 2px);
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 20px rgba(124, 58, 237, 0.5);
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 .btn-3d:active {
-    transform: translate(8px, 8px);
+    transform: translate(4px, 4px);
     box-shadow: none;
 }
 
 .btn-outline.btn-3d {
     box-shadow: 
-        4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(124, 58, 237, 0.3);
+        4px 4px 0 #000000,
+        6px 6px 0 rgba(0, 0, 0, 0.3);
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: var(--color-accent);
 }
 
 .btn-outline.btn-3d:hover {
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 20px rgba(124, 58, 237, 0.5);
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .btn-3d {
     box-shadow: 
         4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(0, 255, 0, 0.4);
+        6px 6px 0 rgba(229, 37, 33, 0.4);
 }
 
 [data-theme="dark"] .btn-3d:hover {
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 20px rgba(0, 255, 0, 0.5);
+        2px 2px 0 var(--color-accent),
+        3px 3px 0 rgba(229, 37, 33, 0.4);
 }
 
 [data-theme="dark"] .btn-outline.btn-3d {
     box-shadow: 
         4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(0, 255, 0, 0.3);
+        6px 6px 0 rgba(229, 37, 33, 0.3);
 }
 
 [data-theme="dark"] .btn-outline.btn-3d:hover {
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 20px rgba(0, 255, 0, 0.5);
+        2px 2px 0 var(--color-accent),
+        3px 3px 0 rgba(229, 37, 33, 0.3);
 }
 
 /* ===== CARD STYLES ===== */
 .card {
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(124, 58, 237, 0.05) 100%);
-    border: 3px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-surface) 0%, #fffef0 100%);
+    border: 4px solid #000000;
     border-radius: var(--radius-md);
     padding: var(--space-5);
     transition: all var(--duration-normal) var(--ease-smooth);
     position: relative;
     overflow: hidden;
+    box-shadow: 4px 4px 0 #000000;
 }
 
 .card::before {
@@ -346,7 +778,7 @@ a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
     transition: left 0.5s ease;
 }
 
@@ -355,27 +787,25 @@ a:hover {
 }
 
 .card:hover {
-    transform: translateY(-6px) rotate(-1deg);
+    transform: translateY(-8px);
     box-shadow: 
-        6px 6px 0 var(--color-accent),
-        12px 12px 0 rgba(124, 58, 237, 0.3),
-        0 0 40px rgba(124, 58, 237, 0.2);
-    border-color: var(--color-accent);
+        6px 6px 0 #000000,
+        8px 8px 0 rgba(0, 0, 0, 0.2);
+    border-color: var(--color-mario-yellow);
 }
 
 [data-theme="dark"] .card {
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(0, 255, 0, 0.05) 100%);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(229, 37, 33, 0.05) 100%);
 }
 
 [data-theme="dark"] .card::before {
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(229, 37, 33, 0.1), transparent);
 }
 
 [data-theme="dark"] .card:hover {
     box-shadow: 
         6px 6px 0 var(--color-accent),
-        12px 12px 0 rgba(0, 255, 0, 0.3),
-        0 0 40px rgba(0, 255, 0, 0.2);
+        8px 8px 0 rgba(229, 37, 33, 0.3);
 }
 
 /* ===== NAVIGATION ===== */
@@ -385,18 +815,18 @@ a:hover {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(250, 245, 255, 0.95) 0%, rgba(243, 232, 255, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(0, 166, 81, 0.95) 0%, rgba(0, 135, 65, 0.95) 100%);
     backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 3px solid var(--color-accent);
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+    border-bottom: 4px solid #000000;
+    box-shadow: 0 4px 0 #000000;
     transition: all var(--duration-normal) var(--ease-smooth);
     padding: var(--space-4) 0;
 }
 
 [data-theme="dark"] .nav {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
-    border-bottom: 3px solid var(--color-accent);
-    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.2);
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 15, 30, 0.95) 100%);
+    border-bottom: 4px solid var(--color-accent);
+    box-shadow: 0 4px 0 var(--color-accent);
 }
 
 .nav-container {
@@ -410,13 +840,14 @@ a:hover {
 
 .nav-logo {
     font-size: var(--text-lg);
-    color: var(--color-accent);
+    color: #ffffff;
     font-weight: bold;
     transition: all var(--duration-fast) var(--ease-smooth);
+    text-shadow: 2px 2px 0 #000000;
 }
 
 .nav-logo:hover {
-    color: var(--color-accent-hover);
+    color: var(--color-mario-yellow);
     transform: scale(1.05);
 }
 
@@ -428,21 +859,22 @@ a:hover {
 }
 
 .nav-link {
-    color: var(--color-text);
+    color: #ffffff;
     font-size: var(--text-xs);
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-sm);
     transition: all var(--duration-fast) var(--ease-smooth);
     position: relative;
+    text-shadow: 1px 1px 0 #000000;
 }
 
 .nav-link:hover {
-    color: var(--color-accent);
-    background-color: var(--color-surface);
+    color: var(--color-mario-yellow);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .nav-link.active {
-    color: var(--color-accent);
+    color: var(--color-mario-yellow);
 }
 
 .nav-link.active::after {
@@ -451,8 +883,8 @@ a:hover {
     bottom: -2px;
     left: 0;
     right: 0;
-    height: 2px;
-    background-color: var(--color-accent);
+    height: 3px;
+    background-color: var(--color-mario-yellow);
 }
 
 /* ===== FEATURED PROJECTS ===== */
@@ -465,15 +897,15 @@ a:hover {
 
 .featured-project-card {
     position: relative;
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 255, 255, 0.8) 100%);
-    border: 3px solid var(--color-border);
+    background: linear-gradient(135deg, #ffffff 0%, #fffef0 100%);
+    border: 4px solid #000000;
     border-radius: var(--radius-lg);
     padding: var(--space-6);
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-smooth);
     overflow: hidden;
     animation: slideUp 0.6s var(--ease-smooth) backwards;
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+    box-shadow: 6px 6px 0 #000000;
 }
 
 .featured-project-card::after {
@@ -483,35 +915,33 @@ a:hover {
     right: -50%;
     width: 200%;
     height: 200%;
-    background: conic-gradient(from 0deg, transparent, var(--project-color, var(--color-accent)), transparent);
+    background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.3), transparent);
     opacity: 0;
     transition: opacity 0.5s ease;
     animation: rotate 4s linear infinite;
 }
 
 .featured-project-card:hover::after {
-    opacity: 0.1;
+    opacity: 1;
 }
 
 .featured-project-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    border-color: var(--project-color, var(--color-accent));
+    transform: translateY(-8px);
+    border-color: var(--color-mario-yellow);
     box-shadow: 
-        0 20px 60px rgba(124, 58, 237, 0.3),
-        0 0 0 3px var(--project-color, var(--color-accent)),
-        0 0 40px var(--project-color, var(--color-accent));
+        8px 8px 0 #000000,
+        10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .featured-project-card {
     background: linear-gradient(135deg, var(--color-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
-    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.1);
+    box-shadow: 6px 6px 0 var(--color-accent);
 }
 
 [data-theme="dark"] .featured-project-card:hover {
     box-shadow: 
-        0 20px 60px rgba(0, 255, 0, 0.3),
-        0 0 0 3px var(--project-color, var(--color-accent)),
-        0 0 40px var(--project-color, var(--color-accent));
+        8px 8px 0 var(--color-accent),
+        10px 10px 0 rgba(229, 37, 33, 0.3);
 }
 
 .featured-project-glow {
@@ -551,12 +981,14 @@ a:hover {
     justify-content: center;
     color: white;
     font-weight: bold;
-    border: 2px solid var(--color-border);
+    border: 3px solid #000000;
     transition: all var(--duration-normal) var(--ease-bounce);
+    box-shadow: 3px 3px 0 #000000;
 }
 
 .featured-project-card:hover .featured-project-icon {
     transform: rotate(5deg) scale(1.1);
+    box-shadow: 4px 4px 0 #000000;
 }
 
 .featured-project-title {
@@ -582,16 +1014,20 @@ a:hover {
 .featured-project-tag {
     font-size: var(--text-xs);
     padding: var(--space-1) var(--space-3);
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
+    background-color: #ffffff;
+    border: 2px solid #000000;
     border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text);
     transition: all var(--duration-fast) var(--ease-smooth);
+    box-shadow: 2px 2px 0 #000000;
 }
 
 .featured-project-card:hover .featured-project-tag {
-    border-color: var(--project-color, var(--color-accent));
-    color: var(--color-text);
+    background-color: var(--color-mario-yellow);
+    border-color: #000000;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 #000000;
 }
 
 .featured-project-arrow {
@@ -615,14 +1051,14 @@ a:hover {
 }
 
 .project-card {
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(124, 58, 237, 0.05) 100%);
-    border: 3px solid var(--color-border);
+    background: linear-gradient(135deg, #ffffff 0%, #fffef0 100%);
+    border: 4px solid #000000;
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--duration-normal) var(--ease-smooth);
     cursor: pointer;
     position: relative;
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+    box-shadow: 5px 5px 0 #000000;
 }
 
 .project-card::before {
@@ -631,8 +1067,8 @@ a:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-mint), var(--color-rose), var(--color-accent));
+    height: 6px;
+    background: linear-gradient(90deg, var(--color-mario-red), var(--color-mario-yellow), var(--color-green-pipe), var(--color-mario-red));
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
     opacity: 0;
@@ -644,22 +1080,22 @@ a:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-12px) rotate(2deg) scale(1.02);
+    transform: translateY(-8px);
     box-shadow: 
-        0 20px 60px rgba(124, 58, 237, 0.3),
-        0 0 40px rgba(124, 58, 237, 0.2);
-    border-color: var(--color-accent);
+        7px 7px 0 #000000,
+        9px 9px 0 rgba(0, 0, 0, 0.2);
+    border-color: var(--color-mario-yellow);
 }
 
 [data-theme="dark"] .project-card {
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(0, 255, 0, 0.05) 100%);
-    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.1);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
+    box-shadow: 5px 5px 0 var(--color-accent);
 }
 
 [data-theme="dark"] .project-card:hover {
     box-shadow: 
-        0 20px 60px rgba(0, 255, 0, 0.3),
-        0 0 40px rgba(0, 255, 0, 0.2);
+        7px 7px 0 var(--color-accent),
+        9px 9px 0 rgba(229, 37, 33, 0.3);
 }
 
 /* ===== EXPERIENCE TIMELINE ===== */
@@ -675,9 +1111,11 @@ a:hover {
     left: 50%;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background-color: var(--color-border);
+    width: 4px;
+    background: linear-gradient(180deg, var(--color-mario-green), var(--color-mario-yellow), var(--color-mario-blue));
     transform: translateX(-50%);
+    border-left: 2px solid #000000;
+    border-right: 2px solid #000000;
 }
 
 .timeline-item {
@@ -686,34 +1124,95 @@ a:hover {
     cursor: pointer;
 }
 
+/* Mario Coin Timeline Dot */
 .timeline-dot {
     position: absolute;
     left: 50%;
     top: 0;
-    width: 16px;
-    height: 16px;
-    background-color: var(--color-accent);
-    border: 3px solid var(--color-bg);
-    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     transform: translateX(-50%);
     z-index: 10;
     transition: all var(--duration-normal) var(--ease-smooth);
+    image-rendering: pixelated;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffd700;
+    box-shadow:
+        /* Create pixelated coin */
+        4px 0 0 #ffd700,
+        8px 0 0 #ffd700,
+        12px 0 0 #ffd700,
+        16px 0 0 #ffd700,
+        20px 0 0 #ffd700,
+        24px 0 0 #ffd700,
+        0 4px 0 #ffd700,
+        4px 4px 0 #ffb700,
+        8px 4px 0 #ffb700,
+        12px 4px 0 #ffb700,
+        16px 4px 0 #ffb700,
+        20px 4px 0 #ffb700,
+        24px 4px 0 #ffb700,
+        28px 4px 0 #ffd700,
+        0 8px 0 #ffd700,
+        4px 8px 0 #ffb700,
+        8px 8px 0 #000000,
+        12px 8px 0 #000000,
+        16px 8px 0 #000000,
+        20px 8px 0 #ffb700,
+        24px 8px 0 #ffb700,
+        28px 8px 0 #ffd700,
+        0 12px 0 #ffd700,
+        4px 12px 0 #ffb700,
+        8px 12px 0 #000000,
+        12px 12px 0 #ffb700,
+        16px 12px 0 #ffb700,
+        20px 12px 0 #000000,
+        24px 12px 0 #ffb700,
+        28px 12px 0 #ffd700,
+        0 16px 0 #ffd700,
+        4px 16px 0 #ffb700,
+        8px 16px 0 #000000,
+        12px 16px 0 #000000,
+        16px 16px 0 #000000,
+        20px 16px 0 #ffb700,
+        24px 16px 0 #ffb700,
+        28px 16px 0 #ffd700,
+        0 20px 0 #ffd700,
+        4px 20px 0 #ffb700,
+        8px 20px 0 #ffb700,
+        12px 20px 0 #ffb700,
+        16px 20px 0 #ffb700,
+        20px 20px 0 #ffb700,
+        24px 20px 0 #ffb700,
+        28px 20px 0 #ffd700,
+        4px 24px 0 #ffd700,
+        8px 24px 0 #ffd700,
+        12px 24px 0 #ffd700,
+        16px 24px 0 #ffd700,
+        20px 24px 0 #ffd700,
+        24px 24px 0 #ffd700;
 }
 
 .timeline-item:hover .timeline-dot {
-    animation: pulse 1s ease-in-out infinite;
-    box-shadow: 0 0 20px var(--color-accent);
+    animation: coin-spin 1s linear infinite;
 }
 
 .timeline-content {
     width: calc(50% - 40px);
     padding: var(--space-5);
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(124, 58, 237, 0.05) 100%);
-    border: 3px solid var(--color-border);
+    background: linear-gradient(135deg, #ffffff 0%, #fffef0 100%);
+    border: 4px solid #000000;
     border-radius: var(--radius-md);
     transition: all var(--duration-normal) var(--ease-smooth);
     position: relative;
     overflow: hidden;
+    box-shadow: 4px 4px 0 #000000;
 }
 
 .timeline-content::before {
@@ -721,9 +1220,9 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 6px;
     height: 100%;
-    background: linear-gradient(180deg, var(--color-accent), var(--color-mint), var(--color-rose));
+    background: linear-gradient(180deg, var(--color-mario-red), var(--color-mario-yellow), var(--color-green-pipe));
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -737,21 +1236,22 @@ a:hover {
 }
 
 .timeline-content:hover {
-    border-color: var(--color-accent);
-    transform: scale(1.08) rotate(2deg);
+    border-color: var(--color-mario-yellow);
+    transform: scale(1.05);
     box-shadow: 
-        0 20px 60px rgba(124, 58, 237, 0.3),
-        0 0 40px rgba(124, 58, 237, 0.2);
+        6px 6px 0 #000000,
+        8px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .timeline-content {
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(0, 255, 0, 0.05) 100%);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
+    box-shadow: 4px 4px 0 var(--color-accent);
 }
 
 [data-theme="dark"] .timeline-content:hover {
     box-shadow: 
-        0 20px 60px rgba(0, 255, 0, 0.3),
-        0 0 40px rgba(0, 255, 0, 0.2);
+        6px 6px 0 var(--color-accent),
+        8px 8px 0 rgba(229, 37, 33, 0.3);
 }
 
 /* ===== HERO SECTION ===== */
@@ -763,7 +1263,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     padding-top: 80px;
-    background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+    background: transparent;
 }
 
 .hero::before {
@@ -773,55 +1273,49 @@ a:hover {
     left: 50%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     animation: pulse-glow 4s ease-in-out infinite;
     pointer-events: none;
 }
 
 [data-theme="dark"] .hero::before {
-    background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 166, 81, 0.2) 0%, transparent 70%);
 }
 
 .hero-title-3d {
     text-shadow: 
-        3px 3px 0 var(--color-accent),
-        6px 6px 0 rgba(124, 58, 237, 0.6),
-        9px 9px 0 rgba(124, 58, 237, 0.3);
+        4px 4px 0 #000000,
+        6px 6px 0 var(--color-mario-green);
     transition: all 0.3s ease;
     letter-spacing: 2px;
     animation: float-title 6s ease-in-out infinite;
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3));
+    color: var(--color-mario-yellow);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
 }
 
 .hero-title-3d:hover {
     text-shadow: 
-        5px 5px 0 var(--color-accent),
-        10px 10px 0 rgba(124, 58, 237, 0.6),
-        15px 15px 0 rgba(124, 58, 237, 0.3);
-    transform: translate(-3px, -3px) scale(1.02);
+        5px 5px 0 #000000,
+        8px 8px 0 var(--color-mario-green);
+    transform: translate(-2px, -2px) scale(1.02);
     animation-play-state: paused;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1));
 }
 
 [data-theme="dark"] .hero-title-3d {
     text-shadow: 
-        3px 3px 0 var(--color-accent),
-        6px 6px 0 rgba(0, 255, 0, 0.6),
-        9px 9px 0 rgba(0, 255, 0, 0.3);
-    background: none;
-    -webkit-text-fill-color: var(--color-accent);
-    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.4));
+        4px 4px 0 #000000,
+        6px 6px 0 var(--color-mario-green);
+    color: var(--color-mario-yellow);
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
 }
 
 [data-theme="dark"] .hero-title-3d:hover {
     text-shadow: 
-        5px 5px 0 var(--color-accent),
-        10px 10px 0 rgba(0, 255, 0, 0.6),
-        15px 15px 0 rgba(0, 255, 0, 0.3);
+        5px 5px 0 #000000,
+        8px 8px 0 var(--color-mario-green);
+    filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1));
 }
 
 .particles {
@@ -834,25 +1328,9 @@ a:hover {
     z-index: 1;
 }
 
+/* Remove particles - they don't fit the theme */
 .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
-    opacity: 0.6;
-    animation: float 6s ease-in-out infinite;
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--color-accent);
-}
-
-.particle:nth-child(even) {
-    background: radial-gradient(circle, var(--color-mint) 0%, transparent 70%);
-    box-shadow: 0 0 10px var(--color-mint);
-}
-
-.particle:nth-child(3n) {
-    background: radial-gradient(circle, var(--color-rose) 0%, transparent 70%);
-    box-shadow: 0 0 10px var(--color-rose);
+    display: none;
 }
 
 /* ===== THEME TOGGLE ===== */
@@ -866,48 +1344,48 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-surface);
-    border: 2px solid var(--color-border);
+    background-color: var(--color-mario-yellow);
+    border: 3px solid #000000;
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-smooth);
-    color: var(--color-accent);
+    color: #000000;
 }
 
 .theme-toggle:hover {
-    border-color: var(--color-accent);
+    border-color: #000000;
     background-color: var(--color-accent);
-    color: var(--color-bg);
+    color: #ffffff;
 }
 
 .theme-toggle-3d {
     box-shadow: 
-        3px 3px 0 var(--color-border),
-        6px 6px 0 rgba(167, 139, 250, 0.2);
+        3px 3px 0 #000000,
+        5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .theme-toggle-3d:hover {
-    transform: translate(3px, 3px);
+    transform: translate(2px, 2px);
     box-shadow: 
-        0px 0px 0 var(--color-border),
-        0px 0px 0 rgba(167, 139, 250, 0.2);
+        1px 1px 0 #000000,
+        2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .theme-toggle-3d:active {
-    transform: translate(6px, 6px);
+    transform: translate(3px, 3px);
     box-shadow: none;
 }
 
 [data-theme="dark"] .theme-toggle-3d {
     box-shadow: 
-        3px 3px 0 var(--color-border),
-        6px 6px 0 rgba(0, 255, 0, 0.2);
+        3px 3px 0 var(--color-accent),
+        5px 5px 0 rgba(229, 37, 33, 0.3);
 }
 
 [data-theme="dark"] .theme-toggle-3d:hover {
     box-shadow: 
-        0px 0px 0 var(--color-border),
-        0px 0px 0 rgba(0, 255, 0, 0.2);
+        1px 1px 0 var(--color-accent),
+        2px 2px 0 rgba(229, 37, 33, 0.3);
 }
 
 .theme-icon {
@@ -919,10 +1397,11 @@ a:hover {
 .social-link-3d {
     position: relative;
     box-shadow: 
-        4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(124, 58, 237, 0.3);
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(124, 58, 237, 0.05) 100%) !important;
+        4px 4px 0 #000000,
+        6px 6px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #fffef0 100%) !important;
     overflow: hidden;
+    border: 3px solid #000000 !important;
 }
 
 .social-link-3d::after {
@@ -932,7 +1411,7 @@ a:hover {
     left: 50%;
     width: 0;
     height: 0;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     transition: width 0.4s ease, height 0.4s ease;
     border-radius: 50%;
@@ -944,33 +1423,33 @@ a:hover {
 }
 
 .social-link-3d:hover {
-    transform: translate(4px, 4px) scale(1.05) !important;
+    transform: translate(2px, 2px) scale(1.05) !important;
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 30px rgba(124, 58, 237, 0.5);
-    border-color: var(--color-accent) !important;
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.2);
+    border-color: var(--color-mario-yellow) !important;
 }
 
 .social-link-3d:active {
-    transform: translate(8px, 8px) !important;
+    transform: translate(4px, 4px) !important;
     box-shadow: none;
 }
 
 [data-theme="dark"] .social-link-3d {
     box-shadow: 
         4px 4px 0 var(--color-accent),
-        8px 8px 0 rgba(0, 255, 0, 0.3);
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(0, 255, 0, 0.05) 100%) !important;
+        6px 6px 0 rgba(229, 37, 33, 0.3);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(26, 26, 26, 0.8) 100%) !important;
 }
 
 [data-theme="dark"] .social-link-3d::after {
-    background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(229, 37, 33, 0.2) 0%, transparent 70%);
 }
 
 [data-theme="dark"] .social-link-3d:hover {
     box-shadow: 
-        0px 0px 0 var(--color-accent),
-        0px 0px 30px rgba(0, 255, 0, 0.5);
+        2px 2px 0 var(--color-accent),
+        3px 3px 0 rgba(229, 37, 33, 0.3);
 }
 
 /* ===== ANIMATIONS ===== */
@@ -1086,18 +1565,656 @@ a:hover {
     }
 }
 
+@keyframes coin-spin {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.3);
+    }
+}
+
+/* Pixelated star animation */
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* Better positioned star */
+.mario-star {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+    animation: star-twinkle 2s ease-in-out infinite;
+    z-index: 3;
+}
+
+.mario-star::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffd700;
+    box-shadow:
+        /* Create pixelated star */
+        16px 0 0 #ffd700,
+        8px 8px 0 #ffd700,
+        16px 8px 0 #ffd700,
+        24px 8px 0 #ffd700,
+        0 16px 0 #ffd700,
+        8px 16px 0 #ffd700,
+        16px 16px 0 #ffd700,
+        24px 16px 0 #ffd700,
+        32px 16px 0 #ffd700,
+        8px 24px 0 #ffd700,
+        16px 24px 0 #ffd700,
+        24px 24px 0 #ffd700,
+        16px 32px 0 #ffd700;
+}
+
+/* Cloud float animation removed - clouds are now static */
+
+@keyframes block-bump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pipe-grow {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+/* ===== PIXEL CLOUDS WITH DUOLINGO-STYLE ANIMATION ===== */
+.clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cloud-cluster {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cloud {
+    position: absolute;
+    image-rendering: pixelated;
+    opacity: 0.95;
+}
+
+.static-cloud {
+    /* Small static pixel clouds for background */
+    width: 120px;
+    height: 56px;
+    animation: none;
+}
+
+.cluster-cloud {
+    /* Base pixel clouds */
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* Different cloud sizes - bigger and more voluminous */
+.cluster-cloud.cloud-small {
+    width: 600px;
+    height: 280px;
+}
+
+.cluster-cloud.cloud-medium {
+    width: 750px;
+    height: 340px;
+}
+
+.cluster-cloud.cloud-large {
+    width: 900px;
+    height: 400px;
+}
+
+.cluster-cloud.cloud-xlarge {
+    width: 1050px;
+    height: 460px;
+}
+
+/* Mario pixel cloud */
+.cloud::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    box-shadow:
+        24px 0 0 #ffffff,
+        32px 0 0 #ffffff,
+        40px 0 0 #ffffff,
+        48px 0 0 #ffffff,
+        56px 0 0 #ffffff,
+        64px 0 0 #ffffff,
+        72px 0 0 #ffffff,
+        16px 8px 0 #ffffff,
+        24px 8px 0 #ffffff,
+        32px 8px 0 #ffffff,
+        40px 8px 0 #ffffff,
+        48px 8px 0 #ffffff,
+        56px 8px 0 #ffffff,
+        64px 8px 0 #ffffff,
+        72px 8px 0 #ffffff,
+        80px 8px 0 #ffffff,
+        8px 16px 0 #ffffff,
+        16px 16px 0 #ffffff,
+        24px 16px 0 #ffffff,
+        32px 16px 0 #ffffff,
+        40px 16px 0 #ffffff,
+        48px 16px 0 #ffffff,
+        56px 16px 0 #ffffff,
+        64px 16px 0 #ffffff,
+        72px 16px 0 #ffffff,
+        80px 16px 0 #ffffff,
+        88px 16px 0 #ffffff,
+        96px 16px 0 #ffffff,
+        0px 24px 0 #ffffff,
+        8px 24px 0 #ffffff,
+        16px 24px 0 #ffffff,
+        24px 24px 0 #ffffff,
+        32px 24px 0 #ffffff,
+        40px 24px 0 #ffffff,
+        48px 24px 0 #ffffff,
+        56px 24px 0 #ffffff,
+        64px 24px 0 #ffffff,
+        72px 24px 0 #ffffff,
+        80px 24px 0 #ffffff,
+        88px 24px 0 #ffffff,
+        96px 24px 0 #ffffff,
+        104px 24px 0 #ffffff,
+        0px 32px 0 #ffffff,
+        8px 32px 0 #ffffff,
+        16px 32px 0 #ffffff,
+        24px 32px 0 #ffffff,
+        32px 32px 0 #ffffff,
+        40px 32px 0 #ffffff,
+        48px 32px 0 #ffffff,
+        56px 32px 0 #ffffff,
+        64px 32px 0 #ffffff,
+        72px 32px 0 #ffffff,
+        80px 32px 0 #ffffff,
+        88px 32px 0 #ffffff,
+        96px 32px 0 #ffffff,
+        104px 32px 0 #ffffff,
+        8px 40px 0 #ffffff,
+        16px 40px 0 #ffffff,
+        24px 40px 0 #ffffff,
+        32px 40px 0 #ffffff,
+        40px 40px 0 #ffffff,
+        48px 40px 0 #ffffff,
+        56px 40px 0 #ffffff,
+        64px 40px 0 #ffffff,
+        72px 40px 0 #ffffff,
+        80px 40px 0 #ffffff,
+        88px 40px 0 #ffffff,
+        96px 40px 0 #ffffff,
+        24px 48px 0 #ffffff,
+        32px 48px 0 #ffffff,
+        40px 48px 0 #ffffff,
+        48px 48px 0 #ffffff,
+        56px 48px 0 #ffffff,
+        64px 48px 0 #ffffff,
+        72px 48px 0 #ffffff,
+        80px 48px 0 #ffffff;
+}
+
+/* Small cloud variant - longer and more voluminous */
+.cluster-cloud.cloud-small::before {
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    box-shadow:
+        42px 0 0 #ffffff,
+        56px 0 0 #ffffff,
+        70px 0 0 #ffffff,
+        84px 0 0 #ffffff,
+        98px 0 0 #ffffff,
+        112px 0 0 #ffffff,
+        28px 14px 0 #ffffff,
+        42px 14px 0 #ffffff,
+        56px 14px 0 #ffffff,
+        70px 14px 0 #ffffff,
+        84px 14px 0 #ffffff,
+        98px 14px 0 #ffffff,
+        112px 14px 0 #ffffff,
+        126px 14px 0 #ffffff,
+        14px 28px 0 #ffffff,
+        28px 28px 0 #ffffff,
+        42px 28px 0 #ffffff,
+        56px 28px 0 #ffffff,
+        70px 28px 0 #ffffff,
+        84px 28px 0 #ffffff,
+        98px 28px 0 #ffffff,
+        112px 28px 0 #ffffff,
+        126px 28px 0 #ffffff,
+        140px 28px 0 #ffffff,
+        0px 42px 0 #ffffff,
+        14px 42px 0 #ffffff,
+        28px 42px 0 #ffffff,
+        42px 42px 0 #ffffff,
+        56px 42px 0 #ffffff,
+        70px 42px 0 #ffffff,
+        84px 42px 0 #ffffff,
+        98px 42px 0 #ffffff,
+        112px 42px 0 #ffffff,
+        126px 42px 0 #ffffff,
+        140px 42px 0 #ffffff,
+        154px 42px 0 #ffffff,
+        0px 56px 0 #ffffff,
+        14px 56px 0 #ffffff,
+        28px 56px 0 #ffffff,
+        42px 56px 0 #ffffff,
+        56px 56px 0 #ffffff,
+        70px 56px 0 #ffffff,
+        84px 56px 0 #ffffff,
+        98px 56px 0 #ffffff,
+        112px 56px 0 #ffffff,
+        126px 56px 0 #ffffff,
+        140px 56px 0 #ffffff,
+        14px 70px 0 #ffffff,
+        28px 70px 0 #ffffff,
+        42px 70px 0 #ffffff,
+        56px 70px 0 #ffffff,
+        70px 70px 0 #ffffff,
+        84px 70px 0 #ffffff,
+        98px 70px 0 #ffffff,
+        112px 70px 0 #ffffff,
+        126px 70px 0 #ffffff,
+        42px 84px 0 #ffffff,
+        56px 84px 0 #ffffff,
+        70px 84px 0 #ffffff,
+        84px 84px 0 #ffffff,
+        98px 84px 0 #ffffff;
+}
+
+/* Medium cloud variant - longer and more voluminous */
+.cluster-cloud.cloud-medium::before {
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    box-shadow:
+        48px 0 0 #ffffff,
+        64px 0 0 #ffffff,
+        80px 0 0 #ffffff,
+        96px 0 0 #ffffff,
+        112px 0 0 #ffffff,
+        128px 0 0 #ffffff,
+        144px 0 0 #ffffff,
+        32px 16px 0 #ffffff,
+        48px 16px 0 #ffffff,
+        64px 16px 0 #ffffff,
+        80px 16px 0 #ffffff,
+        96px 16px 0 #ffffff,
+        112px 16px 0 #ffffff,
+        128px 16px 0 #ffffff,
+        144px 16px 0 #ffffff,
+        160px 16px 0 #ffffff,
+        16px 32px 0 #ffffff,
+        32px 32px 0 #ffffff,
+        48px 32px 0 #ffffff,
+        64px 32px 0 #ffffff,
+        80px 32px 0 #ffffff,
+        96px 32px 0 #ffffff,
+        112px 32px 0 #ffffff,
+        128px 32px 0 #ffffff,
+        144px 32px 0 #ffffff,
+        160px 32px 0 #ffffff,
+        176px 32px 0 #ffffff,
+        192px 32px 0 #ffffff,
+        0px 48px 0 #ffffff,
+        16px 48px 0 #ffffff,
+        32px 48px 0 #ffffff,
+        48px 48px 0 #ffffff,
+        64px 48px 0 #ffffff,
+        80px 48px 0 #ffffff,
+        96px 48px 0 #ffffff,
+        112px 48px 0 #ffffff,
+        128px 48px 0 #ffffff,
+        144px 48px 0 #ffffff,
+        160px 48px 0 #ffffff,
+        176px 48px 0 #ffffff,
+        192px 48px 0 #ffffff,
+        208px 48px 0 #ffffff,
+        0px 64px 0 #ffffff,
+        16px 64px 0 #ffffff,
+        32px 64px 0 #ffffff,
+        48px 64px 0 #ffffff,
+        64px 64px 0 #ffffff,
+        80px 64px 0 #ffffff,
+        96px 64px 0 #ffffff,
+        112px 64px 0 #ffffff,
+        128px 64px 0 #ffffff,
+        144px 64px 0 #ffffff,
+        160px 64px 0 #ffffff,
+        176px 64px 0 #ffffff,
+        192px 64px 0 #ffffff,
+        208px 64px 0 #ffffff,
+        16px 80px 0 #ffffff,
+        32px 80px 0 #ffffff,
+        48px 80px 0 #ffffff,
+        64px 80px 0 #ffffff,
+        80px 80px 0 #ffffff,
+        96px 80px 0 #ffffff,
+        112px 80px 0 #ffffff,
+        128px 80px 0 #ffffff,
+        144px 80px 0 #ffffff,
+        160px 80px 0 #ffffff,
+        176px 80px 0 #ffffff,
+        48px 96px 0 #ffffff,
+        64px 96px 0 #ffffff,
+        80px 96px 0 #ffffff,
+        96px 96px 0 #ffffff,
+        112px 96px 0 #ffffff,
+        128px 96px 0 #ffffff,
+        144px 96px 0 #ffffff;
+}
+
+/* Large cloud variant - even more voluminous */
+.cluster-cloud.cloud-large::before {
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    box-shadow:
+        54px 0 0 #ffffff,
+        72px 0 0 #ffffff,
+        90px 0 0 #ffffff,
+        108px 0 0 #ffffff,
+        126px 0 0 #ffffff,
+        144px 0 0 #ffffff,
+        162px 0 0 #ffffff,
+        180px 0 0 #ffffff,
+        36px 18px 0 #ffffff,
+        54px 18px 0 #ffffff,
+        72px 18px 0 #ffffff,
+        90px 18px 0 #ffffff,
+        108px 18px 0 #ffffff,
+        126px 18px 0 #ffffff,
+        144px 18px 0 #ffffff,
+        162px 18px 0 #ffffff,
+        180px 18px 0 #ffffff,
+        198px 18px 0 #ffffff,
+        18px 36px 0 #ffffff,
+        36px 36px 0 #ffffff,
+        54px 36px 0 #ffffff,
+        72px 36px 0 #ffffff,
+        90px 36px 0 #ffffff,
+        108px 36px 0 #ffffff,
+        126px 36px 0 #ffffff,
+        144px 36px 0 #ffffff,
+        162px 36px 0 #ffffff,
+        180px 36px 0 #ffffff,
+        198px 36px 0 #ffffff,
+        216px 36px 0 #ffffff,
+        234px 36px 0 #ffffff,
+        0px 54px 0 #ffffff,
+        18px 54px 0 #ffffff,
+        36px 54px 0 #ffffff,
+        54px 54px 0 #ffffff,
+        72px 54px 0 #ffffff,
+        90px 54px 0 #ffffff,
+        108px 54px 0 #ffffff,
+        126px 54px 0 #ffffff,
+        144px 54px 0 #ffffff,
+        162px 54px 0 #ffffff,
+        180px 54px 0 #ffffff,
+        198px 54px 0 #ffffff,
+        216px 54px 0 #ffffff,
+        234px 54px 0 #ffffff,
+        252px 54px 0 #ffffff,
+        0px 72px 0 #ffffff,
+        18px 72px 0 #ffffff,
+        36px 72px 0 #ffffff,
+        54px 72px 0 #ffffff,
+        72px 72px 0 #ffffff,
+        90px 72px 0 #ffffff,
+        108px 72px 0 #ffffff,
+        126px 72px 0 #ffffff,
+        144px 72px 0 #ffffff,
+        162px 72px 0 #ffffff,
+        180px 72px 0 #ffffff,
+        198px 72px 0 #ffffff,
+        216px 72px 0 #ffffff,
+        234px 72px 0 #ffffff,
+        252px 72px 0 #ffffff,
+        18px 90px 0 #ffffff,
+        36px 90px 0 #ffffff,
+        54px 90px 0 #ffffff,
+        72px 90px 0 #ffffff,
+        90px 90px 0 #ffffff,
+        108px 90px 0 #ffffff,
+        126px 90px 0 #ffffff,
+        144px 90px 0 #ffffff,
+        162px 90px 0 #ffffff,
+        180px 90px 0 #ffffff,
+        198px 90px 0 #ffffff,
+        216px 90px 0 #ffffff,
+        234px 90px 0 #ffffff,
+        54px 108px 0 #ffffff,
+        72px 108px 0 #ffffff,
+        90px 108px 0 #ffffff,
+        108px 108px 0 #ffffff,
+        126px 108px 0 #ffffff,
+        144px 108px 0 #ffffff,
+        162px 108px 0 #ffffff,
+        180px 108px 0 #ffffff,
+        198px 108px 0 #ffffff,
+        72px 126px 0 #ffffff,
+        90px 126px 0 #ffffff,
+        108px 126px 0 #ffffff,
+        126px 126px 0 #ffffff,
+        144px 126px 0 #ffffff,
+        162px 126px 0 #ffffff;
+}
+
+/* Extra-large cloud variant - massive and voluminous */
+.cluster-cloud.cloud-xlarge::before {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    box-shadow:
+        60px 0 0 #ffffff,
+        80px 0 0 #ffffff,
+        100px 0 0 #ffffff,
+        120px 0 0 #ffffff,
+        140px 0 0 #ffffff,
+        160px 0 0 #ffffff,
+        180px 0 0 #ffffff,
+        200px 0 0 #ffffff,
+        220px 0 0 #ffffff,
+        40px 20px 0 #ffffff,
+        60px 20px 0 #ffffff,
+        80px 20px 0 #ffffff,
+        100px 20px 0 #ffffff,
+        120px 20px 0 #ffffff,
+        140px 20px 0 #ffffff,
+        160px 20px 0 #ffffff,
+        180px 20px 0 #ffffff,
+        200px 20px 0 #ffffff,
+        220px 20px 0 #ffffff,
+        240px 20px 0 #ffffff,
+        20px 40px 0 #ffffff,
+        40px 40px 0 #ffffff,
+        60px 40px 0 #ffffff,
+        80px 40px 0 #ffffff,
+        100px 40px 0 #ffffff,
+        120px 40px 0 #ffffff,
+        140px 40px 0 #ffffff,
+        160px 40px 0 #ffffff,
+        180px 40px 0 #ffffff,
+        200px 40px 0 #ffffff,
+        220px 40px 0 #ffffff,
+        240px 40px 0 #ffffff,
+        260px 40px 0 #ffffff,
+        280px 40px 0 #ffffff,
+        0px 60px 0 #ffffff,
+        20px 60px 0 #ffffff,
+        40px 60px 0 #ffffff,
+        60px 60px 0 #ffffff,
+        80px 60px 0 #ffffff,
+        100px 60px 0 #ffffff,
+        120px 60px 0 #ffffff,
+        140px 60px 0 #ffffff,
+        160px 60px 0 #ffffff,
+        180px 60px 0 #ffffff,
+        200px 60px 0 #ffffff,
+        220px 60px 0 #ffffff,
+        240px 60px 0 #ffffff,
+        260px 60px 0 #ffffff,
+        280px 60px 0 #ffffff,
+        300px 60px 0 #ffffff,
+        0px 80px 0 #ffffff,
+        20px 80px 0 #ffffff,
+        40px 80px 0 #ffffff,
+        60px 80px 0 #ffffff,
+        80px 80px 0 #ffffff,
+        100px 80px 0 #ffffff,
+        120px 80px 0 #ffffff,
+        140px 80px 0 #ffffff,
+        160px 80px 0 #ffffff,
+        180px 80px 0 #ffffff,
+        200px 80px 0 #ffffff,
+        220px 80px 0 #ffffff,
+        240px 80px 0 #ffffff,
+        260px 80px 0 #ffffff,
+        280px 80px 0 #ffffff,
+        300px 80px 0 #ffffff,
+        20px 100px 0 #ffffff,
+        40px 100px 0 #ffffff,
+        60px 100px 0 #ffffff,
+        80px 100px 0 #ffffff,
+        100px 100px 0 #ffffff,
+        120px 100px 0 #ffffff,
+        140px 100px 0 #ffffff,
+        160px 100px 0 #ffffff,
+        180px 100px 0 #ffffff,
+        200px 100px 0 #ffffff,
+        220px 100px 0 #ffffff,
+        240px 100px 0 #ffffff,
+        260px 100px 0 #ffffff,
+        280px 100px 0 #ffffff,
+        60px 120px 0 #ffffff,
+        80px 120px 0 #ffffff,
+        100px 120px 0 #ffffff,
+        120px 120px 0 #ffffff,
+        140px 120px 0 #ffffff,
+        160px 120px 0 #ffffff,
+        180px 120px 0 #ffffff,
+        200px 120px 0 #ffffff,
+        220px 120px 0 #ffffff,
+        240px 120px 0 #ffffff,
+        80px 140px 0 #ffffff,
+        100px 140px 0 #ffffff,
+        120px 140px 0 #ffffff,
+        140px 140px 0 #ffffff,
+        160px 140px 0 #ffffff,
+        180px 140px 0 #ffffff,
+        200px 140px 0 #ffffff,
+        220px 140px 0 #ffffff;
+}
+
+/* ===== MARIO MYSTERY BLOCK (Original Style - Brighter) ===== */
+.mario-block {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    image-rendering: pixelated;
+    z-index: 3;
+    background: 
+        linear-gradient(135deg, 
+            #FFD700 0%, 
+            #FFD700 10%, 
+            #B8860B 10%, 
+            #B8860B 12%,
+            #FFD700 12%,
+            #FFD700 88%,
+            #B8860B 88%,
+            #B8860B 90%,
+            #FFD700 90%
+        );
+    border: 4px solid #000000;
+    border-radius: 8px;
+    box-shadow: 
+        inset 4px 4px 0 rgba(255, 255, 255, 0.4),
+        inset -4px -4px 0 rgba(0, 0, 0, 0.4),
+        0 8px 0 rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mario-block::before {
+    content: '?';
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 
+        3px 3px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
+    font-family: 'Press Start 2P', monospace;
+    position: relative;
+    z-index: 1;
+}
+
+.mario-block::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* Pipe removed from content - now anchored to bottom bar */
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 16px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-bg);
+    background: #89b5ff;
+    border-left: 3px solid #000000;
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--color-accent);
-    border-radius: var(--radius-full);
+    border: 3px solid #000000;
+    border-radius: var(--radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {

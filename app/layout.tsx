@@ -29,6 +29,7 @@ export default function RootLayout({
                 <Navigation />
                 <ThemeProvider>{children}</ThemeProvider>
                 <Footer />
+                <div className="bottom-pipe"></div>
             </body>
         </html>
     );
