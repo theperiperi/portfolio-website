@@ -54,11 +54,19 @@ export function MarioHUD() {
                 <div className="mario-score-text">
                     SCORE: {Math.floor(scrollProgress * 10)}
                 </div>
-                <div 
-                    className={`mario-hover-coin ${coinFalling ? 'falling' : ''}`}
-                    title="Collected coins"
-                ></div>
             </div>
+            
+            {/* Coin below the top pipe */}
+            <div 
+                className={`mario-hover-coin ${coinFalling ? 'falling' : ''}`}
+                title="Collected coins"
+                style={{
+                    position: 'fixed',
+                    top: '160px',
+                    right: '60px',
+                    zIndex: 1000
+                }}
+            ></div>
 
             {/* Mystery Box Scroll Button - Bottom Left */}
             <div 

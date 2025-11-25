@@ -31,6 +31,7 @@ export default function RootLayout({
                 <MarioHUD />
                 <ThemeProvider>{children}</ThemeProvider>
                 <Footer />
+                <div className="top-pipe"></div>
                 <div className="bottom-pipe"></div>
             </body>
         </html>
