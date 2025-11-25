@@ -19,15 +19,30 @@ export function ExperienceCard({ experience, index }: ExperienceCardProps) {
         >
             <div className="timeline-dot"></div>
             <div className="timeline-content">
-                <h3
-                    style={{
-                        fontSize: 'var(--text-lg)',
-                        color: 'var(--color-accent)',
-                        marginBottom: 'var(--space-2)',
-                    }}
-                >
-                    {experience.company}
-                </h3>
+                {experience.logo ? (
+                    <div style={{ marginBottom: 'var(--space-3)' }}>
+                        <img 
+                            src={experience.logo} 
+                            alt={`${experience.company} logo`}
+                            style={{
+                                height: '60px',
+                                maxWidth: '250px',
+                                objectFit: 'contain',
+                                objectPosition: 'left center',
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <h3
+                        style={{
+                            fontSize: 'var(--text-lg)',
+                            color: 'var(--color-accent)',
+                            marginBottom: 'var(--space-2)',
+                        }}
+                    >
+                        {experience.company}
+                    </h3>
+                )}
                 <h4
                     style={{
                         fontSize: 'var(--text-base)',

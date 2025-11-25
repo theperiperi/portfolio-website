@@ -11,6 +11,27 @@ export function FeaturedProjects() {
         router.push(`/projects/${slug}`);
     };
 
+    const getProjectIcon = (slug: string) => {
+        switch (slug) {
+            case 'tholirchalai':
+                return <div className="pixel-coin"></div>;
+            case 'interview-buddy':
+                return <div className="pixel-computer"></div>;
+            case 'course-gpt':
+                return <div className="pixel-book"></div>;
+            default:
+                return null;
+        }
+    };
+
+    const getTitleFontSize = (title: string) => {
+        const length = title.length;
+        if (length <= 10) return 'var(--text-xl)';
+        if (length <= 15) return 'var(--text-lg)';
+        if (length <= 20) return 'var(--text-base)';
+        return 'var(--text-sm)';
+    };
+
     return (
         <section className="section" style={{ paddingTop: 'var(--space-9)', paddingBottom: 'var(--space-9)' }}>
             <div className="container">
@@ -35,14 +56,20 @@ export function FeaturedProjects() {
                                     <div
                                         className="featured-project-icon"
                                         style={{
-                                            backgroundColor: project.color,
+                                            backgroundColor: 'transparent',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
                                         }}
                                     >
-                                        <span style={{ fontSize: 'var(--text-2xl)' }}>
-                                            {project.title.charAt(0)}
-                                        </span>
+                                        {getProjectIcon(project.slug)}
                                     </div>
-                                    <h3 className="featured-project-title">{project.title}</h3>
+                                    <h3 
+                                        className="featured-project-title"
+                                        style={{ fontSize: getTitleFontSize(project.title) }}
+                                    >
+                                        {project.title}
+                                    </h3>
                                 </div>
                                 <p className="featured-project-description">{project.description}</p>
                                 <div className="featured-project-tags">
@@ -58,7 +85,7 @@ export function FeaturedProjects() {
                     ))}
                 </div>
                 <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-                    <a href="/projects" className="btn">
+                    <a href="/projects" className="btn btn-3d">
                         View All Projects
                     </a>
                 </div>

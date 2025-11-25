@@ -127,7 +127,7 @@ body > * {
 }
 
 body::after {
-    content: '';
+    content: '© 2025 Priya Sridhar 🍄';
     position: fixed;
     bottom: 0;
     left: 0;
@@ -151,6 +151,13 @@ body::after {
         inset 0 -4px 0 rgba(0, 0, 0, 0.3);
     pointer-events: none;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 #000000;
 }
 
 /* Pixel-perfect pipe anchored to bottom right */
@@ -975,20 +982,14 @@ a:hover {
 .featured-project-icon {
     width: 60px;
     height: 60px;
-    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: bold;
-    border: 3px solid #000000;
     transition: all var(--duration-normal) var(--ease-bounce);
-    box-shadow: 3px 3px 0 #000000;
 }
 
 .featured-project-card:hover .featured-project-icon {
-    transform: rotate(5deg) scale(1.1);
-    box-shadow: 4px 4px 0 #000000;
+    transform: scale(1.1);
 }
 
 .featured-project-title {
@@ -1583,6 +1584,610 @@ a:hover {
     50% {
         opacity: 0.7;
         transform: scale(1.1);
+    }
+}
+
+/* ===== PIXEL PROJECT ICONS ===== */
+
+/* Mario Coin */
+.pixel-coin {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+.pixel-coin::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #FFD700;
+    box-shadow:
+        /* Top outline */
+        6px 0 0 #8B6914,
+        12px 0 0 #8B6914,
+        18px 0 0 #8B6914,
+        24px 0 0 #8B6914,
+        30px 0 0 #8B6914,
+        36px 0 0 #8B6914,
+        /* Row 1 */
+        0 6px 0 #8B6914,
+        6px 6px 0 #FFD700,
+        12px 6px 0 #FFD700,
+        18px 6px 0 #FFD700,
+        24px 6px 0 #FFD700,
+        30px 6px 0 #FFD700,
+        36px 6px 0 #FFD700,
+        42px 6px 0 #8B6914,
+        /* Row 2 - start of $ symbol */
+        0 12px 0 #8B6914,
+        6px 12px 0 #FFD700,
+        12px 12px 0 #8B6914,
+        18px 12px 0 #8B6914,
+        24px 12px 0 #8B6914,
+        30px 12px 0 #8B6914,
+        36px 12px 0 #FFD700,
+        42px 12px 0 #8B6914,
+        /* Row 3 - $ top */
+        0 18px 0 #8B6914,
+        6px 18px 0 #FFD700,
+        12px 18px 0 #8B6914,
+        18px 18px 0 #FFD700,
+        24px 18px 0 #8B6914,
+        30px 18px 0 #FFD700,
+        36px 18px 0 #FFD700,
+        42px 18px 0 #8B6914,
+        /* Row 4 - $ middle */
+        0 24px 0 #8B6914,
+        6px 24px 0 #FFD700,
+        12px 24px 0 #8B6914,
+        18px 24px 0 #8B6914,
+        24px 24px 0 #8B6914,
+        30px 24px 0 #8B6914,
+        36px 24px 0 #FFD700,
+        42px 24px 0 #8B6914,
+        /* Row 5 - $ bottom */
+        0 30px 0 #8B6914,
+        6px 30px 0 #FFD700,
+        12px 30px 0 #FFD700,
+        18px 30px 0 #8B6914,
+        24px 30px 0 #FFD700,
+        30px 30px 0 #8B6914,
+        36px 30px 0 #FFD700,
+        42px 30px 0 #8B6914,
+        /* Row 6 */
+        0 36px 0 #8B6914,
+        6px 36px 0 #FFD700,
+        12px 36px 0 #8B6914,
+        18px 36px 0 #8B6914,
+        24px 36px 0 #8B6914,
+        30px 36px 0 #8B6914,
+        36px 36px 0 #FFD700,
+        42px 36px 0 #8B6914,
+        /* Bottom outline */
+        6px 42px 0 #8B6914,
+        12px 42px 0 #8B6914,
+        18px 42px 0 #8B6914,
+        24px 42px 0 #8B6914,
+        30px 42px 0 #8B6914,
+        36px 42px 0 #8B6914;
+}
+
+/* Pixel Computer */
+.pixel-computer {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+.pixel-computer::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #000000;
+    box-shadow:
+        /* Monitor frame - black */
+        0 0 0 #000000,
+        6px 0 0 #000000,
+        12px 0 0 #000000,
+        18px 0 0 #000000,
+        24px 0 0 #000000,
+        30px 0 0 #000000,
+        36px 0 0 #000000,
+        42px 0 0 #000000,
+        /* Screen - cyan/blue */
+        0 6px 0 #000000,
+        6px 6px 0 #00CED1,
+        12px 6px 0 #00CED1,
+        18px 6px 0 #00CED1,
+        24px 6px 0 #00CED1,
+        30px 6px 0 #00CED1,
+        36px 6px 0 #00CED1,
+        42px 6px 0 #000000,
+        0 12px 0 #000000,
+        6px 12px 0 #00CED1,
+        12px 12px 0 #87CEEB,
+        18px 12px 0 #87CEEB,
+        24px 12px 0 #87CEEB,
+        30px 12px 0 #87CEEB,
+        36px 12px 0 #00CED1,
+        42px 12px 0 #000000,
+        0 18px 0 #000000,
+        6px 18px 0 #00CED1,
+        12px 18px 0 #87CEEB,
+        18px 18px 0 #87CEEB,
+        24px 18px 0 #87CEEB,
+        30px 18px 0 #87CEEB,
+        36px 18px 0 #00CED1,
+        42px 18px 0 #000000,
+        0 24px 0 #000000,
+        6px 24px 0 #00CED1,
+        12px 24px 0 #00CED1,
+        18px 24px 0 #00CED1,
+        24px 24px 0 #00CED1,
+        30px 24px 0 #00CED1,
+        36px 24px 0 #00CED1,
+        42px 24px 0 #000000,
+        /* Base */
+        0 30px 0 #000000,
+        6px 30px 0 #000000,
+        12px 30px 0 #000000,
+        18px 30px 0 #000000,
+        24px 30px 0 #000000,
+        30px 30px 0 #000000,
+        36px 30px 0 #000000,
+        42px 30px 0 #000000,
+        /* Stand */
+        18px 36px 0 #808080,
+        24px 36px 0 #808080,
+        12px 42px 0 #808080,
+        18px 42px 0 #808080,
+        24px 42px 0 #808080,
+        30px 42px 0 #808080;
+}
+
+/* Pixel Book */
+.pixel-book {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+.pixel-book::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #8B4513;
+    box-shadow:
+        /* Book cover - brown */
+        6px 0 0 #8B4513,
+        12px 0 0 #8B4513,
+        18px 0 0 #8B4513,
+        24px 0 0 #8B4513,
+        30px 0 0 #8B4513,
+        36px 0 0 #8B4513,
+        0 6px 0 #8B4513,
+        6px 6px 0 #D2691E,
+        12px 6px 0 #D2691E,
+        18px 6px 0 #D2691E,
+        24px 6px 0 #D2691E,
+        30px 6px 0 #D2691E,
+        36px 6px 0 #8B4513,
+        42px 6px 0 #8B4513,
+        0 12px 0 #8B4513,
+        6px 12px 0 #D2691E,
+        12px 12px 0 #FFD700,
+        18px 12px 0 #FFD700,
+        24px 12px 0 #D2691E,
+        30px 12px 0 #D2691E,
+        36px 12px 0 #8B4513,
+        42px 12px 0 #FFFFFF,
+        0 18px 0 #8B4513,
+        6px 18px 0 #D2691E,
+        12px 18px 0 #FFD700,
+        18px 18px 0 #FFD700,
+        24px 18px 0 #D2691E,
+        30px 18px 0 #D2691E,
+        36px 18px 0 #8B4513,
+        42px 18px 0 #FFFFFF,
+        0 24px 0 #8B4513,
+        6px 24px 0 #D2691E,
+        12px 24px 0 #D2691E,
+        18px 24px 0 #D2691E,
+        24px 24px 0 #D2691E,
+        30px 24px 0 #D2691E,
+        36px 24px 0 #8B4513,
+        42px 24px 0 #FFFFFF,
+        0 30px 0 #8B4513,
+        6px 30px 0 #D2691E,
+        12px 30px 0 #D2691E,
+        18px 30px 0 #D2691E,
+        24px 30px 0 #D2691E,
+        30px 30px 0 #D2691E,
+        36px 30px 0 #8B4513,
+        42px 30px 0 #FFFFFF,
+        0 36px 0 #8B4513,
+        6px 36px 0 #D2691E,
+        12px 36px 0 #D2691E,
+        18px 36px 0 #D2691E,
+        24px 36px 0 #D2691E,
+        30px 36px 0 #D2691E,
+        36px 36px 0 #8B4513,
+        42px 36px 0 #FFFFFF,
+        6px 42px 0 #8B4513,
+        12px 42px 0 #8B4513,
+        18px 42px 0 #8B4513,
+        24px 42px 0 #8B4513,
+        30px 42px 0 #8B4513,
+        36px 42px 0 #8B4513,
+        42px 42px 0 #FFFFFF;
+}
+
+/* ===== MARIO HUD ===== */
+
+/* Lives Counter - Top Left */
+.mario-lives-hud {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    display: flex;
+    gap: 12px;
+    z-index: 999;
+}
+
+/* XP/Progress Bar - Top Center */
+.mario-xp-bar-hud {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mario-xp-label {
+    font-size: 16px;
+    color: #FFFFFF;
+    text-shadow: 
+        3px 3px 0 #000000;
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.mario-xp-track {
+    width: 400px;
+    height: 28px;
+    background: #2a2a2a;
+    border: 4px solid #000000;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 0 0 3px #FFFFFF,
+        inset 0 0 0 5px #808080,
+        0 4px 0 rgba(0, 0, 0, 0.3);
+    image-rendering: pixelated;
+}
+
+.mario-xp-fill {
+    height: 100%;
+    background: linear-gradient(180deg, 
+        #7FD65A 0%, 
+        #5FB83A 35%,
+        #4A9B2E 50%,
+        #5FB83A 65%,
+        #7FD65A 100%
+    );
+    transition: width 0.3s ease;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 
+        inset 0 3px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mario-xp-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 36px,
+        rgba(0, 0, 0, 0.2) 36px,
+        rgba(0, 0, 0, 0.2) 40px
+    );
+    pointer-events: none;
+}
+
+.mario-life-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    image-rendering: pixelated;
+}
+
+.mario-life-icon::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #FF0000;
+    box-shadow:
+        /* Mario mushroom - red cap with white spots */
+        4px 0 0 #FF0000,
+        8px 0 0 #FF0000,
+        12px 0 0 #FF0000,
+        16px 0 0 #FF0000,
+        0 4px 0 #FF0000,
+        4px 4px 0 #FFFFFF,
+        8px 4px 0 #FF0000,
+        12px 4px 0 #FFFFFF,
+        16px 4px 0 #FF0000,
+        20px 4px 0 #FF0000,
+        0 8px 0 #FF0000,
+        4px 8px 0 #FF0000,
+        8px 8px 0 #FF0000,
+        12px 8px 0 #FF0000,
+        16px 8px 0 #FF0000,
+        20px 8px 0 #FF0000,
+        0 12px 0 #FFE4C4,
+        4px 12px 0 #FFE4C4,
+        8px 12px 0 #000000,
+        12px 12px 0 #000000,
+        16px 12px 0 #FFE4C4,
+        20px 12px 0 #FFE4C4,
+        4px 16px 0 #FFE4C4,
+        8px 16px 0 #FFE4C4,
+        12px 16px 0 #FFE4C4,
+        16px 16px 0 #FFE4C4;
+}
+
+/* Score and Coin - Top Right */
+.mario-score-hud {
+    position: fixed;
+    top: 90px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+}
+
+.mario-score-text {
+    font-size: 14px;
+    color: #FFD700;
+    text-shadow: 3px 3px 0 #000000;
+    white-space: nowrap;
+}
+
+/* Hover Coin (spins on hover) */
+.mario-hover-coin {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease;
+}
+
+.mario-hover-coin:hover:not(.falling) {
+    animation: coin-spin-hover 0.6s steps(8) infinite;
+}
+
+.mario-hover-coin.falling {
+    animation: coin-fall 1s ease-in forwards !important;
+}
+
+.mario-hover-coin::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #FFD700;
+    box-shadow:
+        /* Smaller coin */
+        5px 0 0 #8B6914,
+        10px 0 0 #8B6914,
+        15px 0 0 #8B6914,
+        20px 0 0 #8B6914,
+        25px 0 0 #8B6914,
+        30px 0 0 #8B6914,
+        0 5px 0 #8B6914,
+        5px 5px 0 #FFD700,
+        10px 5px 0 #FFD700,
+        15px 5px 0 #FFD700,
+        20px 5px 0 #FFD700,
+        25px 5px 0 #FFD700,
+        30px 5px 0 #FFD700,
+        35px 5px 0 #8B6914,
+        0 10px 0 #8B6914,
+        5px 10px 0 #FFD700,
+        10px 10px 0 #8B6914,
+        15px 10px 0 #8B6914,
+        20px 10px 0 #8B6914,
+        25px 10px 0 #8B6914,
+        30px 10px 0 #FFD700,
+        35px 10px 0 #8B6914,
+        0 15px 0 #8B6914,
+        5px 15px 0 #FFD700,
+        10px 15px 0 #8B6914,
+        15px 15px 0 #FFD700,
+        20px 15px 0 #8B6914,
+        25px 15px 0 #FFD700,
+        30px 15px 0 #FFD700,
+        35px 15px 0 #8B6914,
+        0 20px 0 #8B6914,
+        5px 20px 0 #FFD700,
+        10px 20px 0 #8B6914,
+        15px 20px 0 #8B6914,
+        20px 20px 0 #8B6914,
+        25px 20px 0 #8B6914,
+        30px 20px 0 #FFD700,
+        35px 20px 0 #8B6914,
+        0 25px 0 #8B6914,
+        5px 25px 0 #FFD700,
+        10px 25px 0 #FFD700,
+        15px 25px 0 #8B6914,
+        20px 25px 0 #FFD700,
+        25px 25px 0 #8B6914,
+        30px 25px 0 #FFD700,
+        35px 25px 0 #8B6914,
+        0 30px 0 #8B6914,
+        5px 30px 0 #FFD700,
+        10px 30px 0 #8B6914,
+        15px 30px 0 #8B6914,
+        20px 30px 0 #8B6914,
+        25px 30px 0 #8B6914,
+        30px 30px 0 #FFD700,
+        35px 30px 0 #8B6914,
+        5px 35px 0 #8B6914,
+        10px 35px 0 #8B6914,
+        15px 35px 0 #8B6914,
+        20px 35px 0 #8B6914,
+        25px 35px 0 #8B6914,
+        30px 35px 0 #8B6914;
+}
+
+/* Mystery Box Scroll Button - Bottom Left */
+.mario-mystery-scroll-box {
+    position: fixed;
+    bottom: 80px;
+    left: 30px;
+    width: 56px;
+    height: 56px;
+    background: #FFD700;
+    border: 4px solid #000000;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 
+        4px 4px 0 #000000,
+        6px 6px 0 rgba(0, 0, 0, 0.3);
+    image-rendering: pixelated;
+}
+
+.mario-mystery-scroll-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 0 #000000,
+        8px 8px 0 rgba(0, 0, 0, 0.3);
+    background: #FFE55C;
+}
+
+.mario-mystery-scroll-box:active {
+    transform: translateY(-2px);
+    box-shadow: 
+        2px 2px 0 #000000,
+        3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mystery-box-arrow {
+    font-size: 32px;
+    color: #8B4513;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    animation: arrow-bounce 1s ease-in-out infinite;
+}
+
+@keyframes coin-spin-hover {
+    0% { transform: scaleX(1); }
+    12.5% { transform: scaleX(0.8); }
+    25% { transform: scaleX(0.5); }
+    37.5% { transform: scaleX(0.2); }
+    50% { transform: scaleX(0); }
+    62.5% { transform: scaleX(0.2); }
+    75% { transform: scaleX(0.5); }
+    87.5% { transform: scaleX(0.8); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes coin-fall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh - 100px)) rotate(1080deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Responsive HUD */
+@media (max-width: 768px) {
+    .mario-lives-hud {
+        top: 80px;
+        left: 10px;
+        gap: 8px;
+    }
+    
+    .mario-life-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .mario-xp-bar-hud {
+        top: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .mario-xp-track {
+        width: 250px;
+        height: 24px;
+        border-radius: 12px;
+    }
+    
+    .mario-xp-fill {
+        border-radius: 8px;
+    }
+    
+    .mario-xp-label {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    .mario-score-hud {
+        top: 80px;
+        right: 10px;
+    }
+    
+    .mario-score-text {
+        font-size: 10px;
+    }
+    
+    .mario-mystery-scroll-box {
+        bottom: 70px;
+        left: 15px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .mystery-box-arrow {
+        font-size: 24px;
     }
 }
 

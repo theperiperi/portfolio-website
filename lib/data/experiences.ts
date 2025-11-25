@@ -4,6 +4,7 @@ export const experiences: Experience[] = [
     {
         slug: 'google-swe-intern',
         company: 'Google',
+        logo: '/logos/google-logo.svg',
         role: 'SWE Intern',
         duration: 'May 2025 - August 2025',
         location: 'Bangalore, Onsite',
@@ -26,6 +27,7 @@ export const experiences: Experience[] = [
     {
         slug: 'archways-ai',
         company: 'Archways AI',
+        logo: '/logos/archways-logo.png',
         role: 'SWE Intern',
         duration: 'July 2024 - September 2024',
         location: 'Remote',
@@ -48,6 +50,7 @@ export const experiences: Experience[] = [
     {
         slug: 'codincity',
         company: 'Codincity',
+        logo: '/logos/codincity-logo.png',
         role: 'AI/ML Intern',
         duration: 'June 2024 - July 2024',
         location: 'Hybrid',

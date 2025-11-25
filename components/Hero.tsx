@@ -166,10 +166,10 @@ export function Hero() {
                     className="hero-subtitle hero-subtitle-enhanced"
                     style={{
                         fontSize: 'var(--text-base)',
-                        color: 'var(--color-mario-yellow)',
+                        color: 'var(--color-mario-green)',
                         marginBottom: 'var(--space-6)',
                         fontWeight: 'bold',
-                        textShadow: '3px 3px 0 #000000, 5px 5px 0 var(--color-mario-green)',
+                        textShadow: '2px 2px 0 #000000',
                     }}
                 >
                     Software Engineer | AI/ML Enthusiast | Full-Stack Developer
@@ -189,10 +189,10 @@ export function Hero() {
                     
                     @keyframes glow-pulse {
                         0%, 100% {
-                            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+                            filter: drop-shadow(0 0 8px rgba(0, 166, 81, 0.6));
                         }
                         50% {
-                            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+                            filter: drop-shadow(0 0 20px rgba(0, 166, 81, 1));
                         }
                     }
                 `}</style>

@@ -16,6 +16,7 @@ export interface Project {
 export interface Experience {
     slug: string;
     company: string;
+    logo?: string;
     role: string;
     duration: string;
     location: string;

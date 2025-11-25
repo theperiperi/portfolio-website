@@ -4,6 +4,7 @@ import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { MarioHUD } from '@/components/MarioHUD';
 
 const pressStart2P = Press_Start_2P({
     weight: '400',
@@ -27,6 +28,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={pressStart2P.className}>
                 <Navigation />
+                <MarioHUD />
                 <ThemeProvider>{children}</ThemeProvider>
                 <Footer />
                 <div className="bottom-pipe"></div>
