@@ -195,15 +195,24 @@ export function Hero() {
             />
             {/* Dense cloud layers that clear horizontally on scroll */}
             <div className="cloud-cluster" ref={clusterRef}></div>
-            <div className="hero-content" style={{ zIndex: 10, textAlign: 'center', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>
+            <div className="hero-content" style={{ 
+                zIndex: 10, 
+                textAlign: 'center', 
+                backdropFilter: 'blur(8px)', 
+                WebkitBackdropFilter: 'blur(8px)',
+                padding: '0 var(--space-4)',
+                maxWidth: '100%',
+            }}>
                 <h1
                     className="hero-title hero-title-3d"
                     onMouseEnter={handleTitleHover}
                     data-text="PRIYA SRIDHAR"
                     style={{
-                        fontSize: 'clamp(var(--text-2xl), 5vw, var(--text-4xl))',
+                        fontSize: 'clamp(1.5rem, 8vw, var(--text-4xl))',
                         marginBottom: 'var(--space-4)',
                         position: 'relative',
+                        wordBreak: 'break-word',
+                        lineHeight: '1.2',
                     }}
                 >
                     PRIYA SRIDHAR
@@ -211,20 +220,36 @@ export function Hero() {
                 <p
                     className="hero-subtitle hero-subtitle-enhanced"
                     style={{
-                        fontSize: 'var(--text-base)',
+                        fontSize: 'clamp(10px, 3vw, var(--text-base))',
                         color: 'var(--color-mario-green)',
                         marginBottom: 'var(--space-6)',
                         fontWeight: 'bold',
                         textShadow: '2px 2px 0 #000000',
+                        lineHeight: '1.6',
+                        maxWidth: '90%',
+                        margin: '0 auto var(--space-6)',
                     }}
                 >
                     Software Engineer | AI/ML Enthusiast | Full-Stack Developer
                 </p>
-                <div className="hero-cta" style={{ marginTop: 'var(--space-6)', display: 'flex', gap: 'var(--space-4)', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <a href="#projects" className="btn btn-3d" style={{ backgroundColor: 'var(--color-accent)', color: '#ffffff' }}>
+                <div className="hero-cta" style={{ 
+                    marginTop: 'var(--space-6)', 
+                    display: 'flex', 
+                    gap: 'var(--space-4)', 
+                    justifyContent: 'center', 
+                    flexWrap: 'wrap',
+                    padding: '0 var(--space-2)',
+                }}>
+                    <a href="#projects" className="btn btn-3d" style={{ 
+                        backgroundColor: 'var(--color-accent)', 
+                        color: '#ffffff',
+                        minWidth: '140px',
+                    }}>
                         View Work
                     </a>
-                    <a href="#contact" className="btn btn-outline btn-3d">
+                    <a href="#contact" className="btn btn-outline btn-3d" style={{
+                        minWidth: '140px',
+                    }}>
                         Get in Touch
                     </a>
                 </div>

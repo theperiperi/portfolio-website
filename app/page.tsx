@@ -62,6 +62,7 @@ export default function HomePage() {
                         Connect With Me
                     </h2>
                     <div
+                        className="social-links-grid"
                         style={{
                             display: 'grid',
                             gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',

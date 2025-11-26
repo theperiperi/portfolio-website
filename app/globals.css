@@ -3405,9 +3405,47 @@ a:hover {
 }
 
 /* ===== RESPONSIVE ===== */
+
+/* Tablets and smaller laptops */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0 var(--space-5);
+    }
+
+    .featured-projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-5);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-5);
+    }
+
+    h1 {
+        font-size: var(--text-3xl);
+    }
+
+    h2 {
+        font-size: var(--text-2xl);
+    }
+
+    h3 {
+        font-size: var(--text-xl);
+    }
+}
+
+/* Mobile devices */
 @media (max-width: 768px) {
     html {
         font-size: 14px;
+    }
+
+    body::after {
+        font-size: 10px;
+        padding-left: 15px;
+        height: 50px;
     }
 
     .container {
@@ -3416,42 +3454,567 @@ a:hover {
 
     .section {
         padding: var(--space-7) 0;
+        min-height: auto;
+    }
+
+    /* Navigation */
+    .nav {
+        padding: var(--space-3) 0;
+    }
+
+    .nav-container {
+        padding: 0 var(--space-4);
+    }
+
+    .nav-logo {
+        font-size: var(--text-sm);
     }
 
     .nav-menu {
-        gap: var(--space-3);
+        gap: var(--space-2);
     }
 
     .nav-link {
+        font-size: 9px;
+        padding: var(--space-1) var(--space-2);
+    }
+
+    /* Hero section */
+    .hero {
+        padding-top: 60px;
+        min-height: 100vh;
+    }
+
+    h1 {
+        font-size: var(--text-2xl);
+    }
+
+    h2 {
+        font-size: var(--text-xl);
+    }
+
+    h3 {
+        font-size: var(--text-lg);
+    }
+
+    h4 {
+        font-size: var(--text-base);
+    }
+
+    /* Featured Projects */
+    .featured-projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .featured-project-card {
+        padding: var(--space-5);
+    }
+
+    .featured-project-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .featured-project-title {
+        font-size: var(--text-base) !important;
+    }
+
+    .featured-project-description {
+        font-size: 11px;
+    }
+
+    .featured-project-tag {
         font-size: 10px;
         padding: var(--space-1) var(--space-2);
     }
 
-    .featured-projects-grid {
-        grid-template-columns: 1fr;
-    }
-
+    /* Timeline */
     .timeline::before {
         left: 20px;
     }
 
     .timeline-dot {
         left: 20px;
+        width: 24px;
+        height: 24px;
     }
 
     .timeline-content {
         width: calc(100% - 60px);
         margin-left: 60px !important;
+        padding: var(--space-4);
     }
 
+    /* Projects Grid */
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    /* Buttons */
+    .btn {
+        padding: var(--space-2) var(--space-4);
+        font-size: 11px;
+    }
+
+    .btn-3d {
+        box-shadow: 
+            3px 3px 0 #000000,
+            4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-3d:hover {
+        box-shadow: 
+            1px 1px 0 #000000,
+            2px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--space-4);
+    }
+
+    /* Pipes - make smaller on mobile */
+    .bottom-pipe {
+        right: 20px;
+        width: 72px;
+        height: 150px;
+        transform: scale(0.75);
+        transform-origin: bottom right;
+    }
+
+    .top-pipe {
+        right: 20px;
+        width: 72px;
+        height: 135px;
+        transform: scale(0.75);
+        transform-origin: top right;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        top: var(--space-3);
+        right: var(--space-4);
+    }
+
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Social links */
+    .social-link-3d {
+        padding: var(--space-3) !important;
+    }
+
+    /* Pixel icons - make smaller */
+    .pixel-coin,
+    .pixel-computer,
+    .pixel-book {
+        width: 40px;
+        height: 40px;
+        transform: scale(0.85);
+    }
+
+    /* Clouds - reduce size on mobile */
+    .cluster-cloud.cloud-small {
+        width: 400px;
+        height: 200px;
+    }
+
+    .cluster-cloud.cloud-medium {
+        width: 500px;
+        height: 240px;
+    }
+
+    .cluster-cloud.cloud-large {
+        width: 600px;
+        height: 280px;
+    }
+
+    .cluster-cloud.cloud-xlarge {
+        width: 700px;
+        height: 320px;
+    }
+
+    /* Mario blocks */
+    .mario-block {
+        width: 60px;
+        height: 60px;
+    }
+
+    .mario-block::before {
+        font-size: 36px;
+    }
+
+    /* Stars */
+    .mario-star {
+        width: 32px;
+        height: 32px;
+        transform: scale(0.8);
+    }
+
+    /* Spinning coins */
+    .spinning-coin {
+        width: 20px;
+        height: 20px;
+        transform: scale(0.7);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    body::after {
+        font-size: 8px;
+        padding-left: 10px;
+        height: 45px;
+    }
+
+    .container {
+        padding: 0 var(--space-3);
+    }
+
+    .section {
+        padding: var(--space-6) 0;
+    }
+
+    /* Navigation */
+    .nav-logo {
+        font-size: 11px;
+    }
+
+    .nav-menu {
+        gap: var(--space-1);
+    }
+
+    .nav-link {
+        font-size: 8px;
+        padding: 4px 6px;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 50px;
+    }
+
+    h1 {
+        font-size: var(--text-xl);
+    }
+
+    h2 {
+        font-size: var(--text-lg);
+    }
+
+    h3 {
+        font-size: var(--text-base);
+    }
+
+    /* Featured Projects */
+    .featured-project-card {
+        padding: var(--space-4);
+    }
+
+    .featured-project-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .featured-project-title {
+        font-size: var(--text-sm) !important;
+    }
+
+    .featured-project-description {
+        font-size: 10px;
+    }
+
+    .featured-project-tag {
+        font-size: 9px;
+    }
+
+    /* Timeline */
+    .timeline-content {
+        padding: var(--space-3);
+    }
+
+    /* Buttons */
+    .btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: 10px;
+    }
+
+    /* Pipes - even smaller */
+    .bottom-pipe {
+        right: 10px;
+        transform: scale(0.6);
+    }
+
+    .top-pipe {
+        right: 10px;
+        transform: scale(0.6);
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Social links grid */
+    .social-links-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 200px !important;
+        gap: var(--space-3) !important;
+    }
+
+    .social-link-3d svg {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .social-link-3d span {
+        font-size: 9px !important;
+    }
+
+    /* Pixel icons */
+    .pixel-coin,
+    .pixel-computer,
+    .pixel-book {
+        width: 36px;
+        height: 36px;
+        transform: scale(0.75);
+    }
+
+    /* Clouds - further reduce */
+    .cluster-cloud.cloud-small {
+        width: 300px;
+        height: 150px;
+    }
+
+    .cluster-cloud.cloud-medium {
+        width: 400px;
+        height: 180px;
+    }
+
+    .cluster-cloud.cloud-large {
+        width: 500px;
+        height: 220px;
+    }
+
+    .cluster-cloud.cloud-xlarge {
+        width: 600px;
+        height: 260px;
+    }
+
+    /* Mario blocks */
+    .mario-block {
+        width: 48px;
+        height: 48px;
+    }
+
+    .mario-block::before {
+        font-size: 28px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    html {
+        font-size: 11px;
+    }
+
+    .nav-logo {
+        font-size: 10px;
+    }
+
+    .nav-link {
+        font-size: 7px;
+        padding: 3px 5px;
+    }
+
+    .featured-project-card {
+        padding: var(--space-3);
+    }
+
+    .btn {
+        font-size: 9px;
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: var(--space-8) 0;
+    }
+
+    .section {
+        min-height: auto;
+        padding: var(--space-6) 0;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets for better mobile UX */
+    .nav-link {
+        padding: var(--space-2) var(--space-3);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .featured-project-card,
+    .project-card,
+    .timeline-item {
+        /* Remove hover effects on touch devices */
+        transition: transform 0.2s ease;
+    }
+
+    .featured-project-card:active,
+    .project-card:active,
+    .timeline-item:active {
+        transform: scale(0.98);
+    }
+
+    /* Disable hover animations on touch */
+    .card:hover::before,
+    .featured-project-card:hover::after {
+        left: -100%;
+    }
+}
+
+/* Additional mobile-specific improvements */
+@media (max-width: 768px) {
+    /* Improve text readability on mobile */
+    p {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    /* Better spacing for mobile */
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+
+    /* Improve project card images on mobile */
+    .project-card img {
+        height: 180px !important;
+    }
+
+    /* Better timeline layout */
+    .timeline-content h4 {
+        font-size: var(--text-sm);
+    }
+
+    .timeline-content p {
+        font-size: 10px;
+    }
+
+    /* Adjust experience card logos */
+    .timeline-content img {
+        height: 50px !important;
+        max-width: 200px !important;
+    }
+
+    /* Better footer spacing */
+    body::after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Improve scrollbar on mobile */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border: 2px solid #000000;
+    }
+
+    /* Reduce animations on mobile for performance */
+    .spinning-coin {
+        animation-duration: 1.5s;
+    }
+
+    /* Better modal/overlay handling */
+    .hero-overlay {
+        pointer-events: none;
+    }
+
+    /* Improve card shadows on mobile */
+    .card,
+    .featured-project-card,
+    .project-card {
+        box-shadow: 3px 3px 0 #000000;
+    }
+
+    .card:hover,
+    .featured-project-card:hover,
+    .project-card:hover {
+        box-shadow: 4px 4px 0 #000000;
     }
 }
 
 @media (max-width: 480px) {
-    html {
-        font-size: 12px;
+    /* Even smaller text for tiny screens */
+    p {
+        font-size: 10px;
+    }
+
+    /* Compact hero section */
+    .hero-subtitle {
+        font-size: 9px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Smaller gaps */
+    .featured-projects-grid,
+    .projects-grid {
+        gap: var(--space-4) !important;
+    }
+
+    /* Compact cards */
+    .featured-project-card,
+    .project-card {
+        border-width: 3px;
+    }
+
+    /* Smaller icons in cards */
+    .featured-project-card svg,
+    .social-link-3d svg {
+        width: 28px !important;
+        height: 28px !important;
     }
 }
 
