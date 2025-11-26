@@ -1,10 +1,10 @@
-# 🚀 Personal Portfolio Website
+# Personal Portfolio Website
 
 Welcome to my personal portfolio website! This is where I showcase my projects, experience, and a bit about myself. Built with modern web technologies, this site reflects my journey as a developer and creator.
 
 **🌐 Live Site**: [https://priyadharshini-sridhar.vercel.app/](https://priyadharshini-sridhar.vercel.app/)
 
-## ✨ About This Project
+## About This Project
 
 This portfolio website serves as a digital space to highlight my work, skills, and professional experience. It features:
 
@@ -21,7 +21,7 @@ This portfolio website serves as a digital space to highlight my work, skills, a
 - **Content Management**: Markdown-based content system
 - **Deployment**: Ready for deployment on Vercel, Netlify, or similar platforms
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -67,7 +67,7 @@ portfolio-website/
 └── styles/               # CSS stylesheets
 ```
 
-## 🎨 Customization
+## Customization
 
 Feel free to fork this repository and make it your own! Here's how:
 
@@ -76,7 +76,7 @@ Feel free to fork this repository and make it your own! Here's how:
 3. **Add Components**: Create new components in `/components/` to extend functionality
 4. **Update Data**: Modify `/lib/data/` files to reflect your information
 
-## 📝 Adding Your Own Content
+## Adding Your Own Content
 
 ### Projects
 Add new project markdown files to `/content/projects/` with the following structure:
@@ -93,11 +93,11 @@ Your project content here...
 ### Experience
 Add experience entries to `/content/experience/` following the same markdown format.
 
-## 📬 Contact & Questions
+## Contact & Questions
 
 Have questions or want to connect? Feel free to reach out (contact details on profile)!
 
-## 🤝 Contributing
+## Contributing
 
 While this is a personal portfolio, I'm open to suggestions and improvements! If you find a bug or have an idea:
 
@@ -107,11 +107,11 @@ While this is a personal portfolio, I'm open to suggestions and improvements! If
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🌟 Fork This Project
+## Fork This Project
 
 Want to use this portfolio as a template for your own? Go ahead! 
 
