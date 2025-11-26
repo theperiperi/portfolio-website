@@ -212,7 +212,6 @@ export function Hero() {
                         wordBreak: 'break-word',
                         lineHeight: '1.2',
                         WebkitTextStroke: '2px #000000',
-                        textStroke: '2px #000000',
                     }}
                 >
                     PRIYA SRIDHAR

@@ -13,10 +13,15 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-    title: 'Developer Portfolio',
-    description: 'Software Developer Portfolio - Showcasing projects, experience, and creative work',
-    keywords: 'software developer, portfolio, web development, projects',
-    authors: [{ name: 'Developer Portfolio' }],
+    title: 'Priya Sridhar',
+    description: 'Developer Portfolio of Priyadharshini Sridhar- Showcasing projects, experience, and creative work',
+    keywords: 'priya sridhar, software developer, portfolio, web development, projects',
+    authors: [{ name: 'Priya Sridhar' }],
+    icons: {
+        icon: [
+            { url: '/favicon.svg', type: 'image/svg+xml' },
+        ],
+    },
 };
 
 export default function RootLayout({
