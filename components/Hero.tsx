@@ -198,8 +198,6 @@ export function Hero() {
             <div className="hero-content" style={{ 
                 zIndex: 10, 
                 textAlign: 'center', 
-                backdropFilter: 'blur(8px)', 
-                WebkitBackdropFilter: 'blur(8px)',
                 padding: '0 var(--space-4)',
                 maxWidth: '100%',
             }}>
@@ -213,6 +211,8 @@ export function Hero() {
                         position: 'relative',
                         wordBreak: 'break-word',
                         lineHeight: '1.2',
+                        WebkitTextStroke: '2px #000000',
+                        textStroke: '2px #000000',
                     }}
                 >
                     PRIYA SRIDHAR
