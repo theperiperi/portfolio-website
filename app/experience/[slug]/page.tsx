@@ -89,13 +89,7 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
                             {experience.technologies.map((tech) => (
                                 <span
                                     key={tech}
-                                    style={{
-                                        padding: 'var(--space-2) var(--space-4)',
-                                        backgroundColor: 'var(--color-surface)',
-                                        border: '2px solid var(--color-border)',
-                                        borderRadius: 'var(--radius-sm)',
-                                        fontSize: 'var(--text-sm)',
-                                    }}
+                                    className="tech-tag"
                                 >
                                     {tech}
                                 </span>
@@ -104,16 +98,16 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
                     </div>
 
                     {/* Navigation */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 'var(--space-8)', borderTop: '2px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 'var(--space-8)', borderTop: '2px solid var(--color-border)', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
                         {prevExperience ? (
-                            <Link href={`/experience/${prevExperience.slug}`} className="btn btn-outline">
+                            <Link href={`/experience/${prevExperience.slug}`} className="btn btn-outline btn-3d">
                                 ← {prevExperience.company}
                             </Link>
                         ) : (
                             <div></div>
                         )}
                         {nextExperience && (
-                            <Link href={`/experience/${nextExperience.slug}`} className="btn btn-outline">
+                            <Link href={`/experience/${nextExperience.slug}`} className="btn btn-outline btn-3d">
                                 {nextExperience.company} →
                             </Link>
                         )}

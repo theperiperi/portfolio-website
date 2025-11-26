@@ -45,25 +45,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         <h1 style={{ marginBottom: 'var(--space-4)', color: 'var(--color-accent)' }}>
                             {project.title}
                         </h1>
-                        <p style={{ fontSize: 'var(--text-base)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>
+                        <p style={{ fontSize: 'var(--text-base)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
                             {project.description}
                         </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
-                            {project.tags.map((tag) => (
-                                <span key={tag} className="tag">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
                         {(project.demoUrl || project.githubUrl) && (
-                            <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
+                            <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
                                 {project.demoUrl && (
-                                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn">
+                                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-3d">
                                         View Demo
                                     </a>
                                 )}
                                 {project.githubUrl && (
-                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-3d">
                                         View Code
                                     </a>
                                 )}
@@ -96,13 +89,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                             {project.technologies.map((tech) => (
                                 <span
                                     key={tech}
-                                    style={{
-                                        padding: 'var(--space-2) var(--space-4)',
-                                        backgroundColor: 'var(--color-surface)',
-                                        border: '2px solid var(--color-border)',
-                                        borderRadius: 'var(--radius-sm)',
-                                        fontSize: 'var(--text-sm)',
-                                    }}
+                                    className="tech-tag"
                                 >
                                     {tech}
                                 </span>
@@ -111,16 +98,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     </div>
 
                     {/* Navigation */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 'var(--space-8)', borderTop: '2px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 'var(--space-8)', borderTop: '2px solid var(--color-border)', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
                         {prevProject ? (
-                            <Link href={`/projects/${prevProject.slug}`} className="btn btn-outline">
+                            <Link href={`/projects/${prevProject.slug}`} className="btn btn-outline btn-3d">
                                 ← {prevProject.title}
                             </Link>
                         ) : (
                             <div></div>
                         )}
                         {nextProject && (
-                            <Link href={`/projects/${nextProject.slug}`} className="btn btn-outline">
+                            <Link href={`/projects/${nextProject.slug}`} className="btn btn-outline btn-3d">
                                 {nextProject.title} →
                             </Link>
                         )}
