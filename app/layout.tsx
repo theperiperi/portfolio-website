@@ -5,6 +5,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { MarioHUD } from '@/components/MarioHUD';
+import { Analytics } from '@vercel/analytics/next';
 
 const pressStart2P = Press_Start_2P({
     weight: '400',
@@ -41,6 +42,7 @@ export default function RootLayout({
                 <Footer />
                 <div className="top-pipe"></div>
                 <div className="bottom-pipe"></div>
+                <Analytics />
             </body>
         </html>
     );
