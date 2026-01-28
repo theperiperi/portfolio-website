@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     description: 'Developer Portfolio of Priyadharshini Sridhar- Showcasing projects, experience, and creative work',
     keywords: 'priya sridhar, software developer, portfolio, web development, projects',
     authors: [{ name: 'Priya Sridhar' }],
+    verification: {
+        google: '4MdM1M8WRD52eI0GMc264ILlwpftrAKo6a8kT_B09HU',
+    },
     icons: {
         icon: [
             { url: '/favicon.svg', type: 'image/svg+xml' },
