@@ -19,8 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 
     return {
-        title: `${project.title} | Developer Portfolio`,
-        description: project.description,
+        title: project.title,
+        description: `${project.description} — A project by Priyadharshini Sridhar.`,
+        alternates: {
+            canonical: `/projects/${slug}`,
+        },
     };
 }
 
