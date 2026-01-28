@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     ],
     authors: [{ name: 'Priyadharshini Sridhar' }],
     creator: 'Priyadharshini Sridhar',
+    verification: {
+        google: '4MdM1M8WRD52eI0GMc264ILlwpftrAKo6a8kT_B09HU',
+    },
     icons: {
         icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
     },
