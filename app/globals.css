@@ -47,6 +47,9 @@
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
+    /* Nav height — updated dynamically by JS, fallback for initial render */
+    --nav-total-height: 68px;
+
     /* Border radius */
     --radius-sm: 4px;
     --radius-md: 8px;
@@ -515,18 +518,20 @@ body::after {
 /* Pixel-perfect pipe anchored to top right (pointing downwards) */
 .top-pipe {
     position: fixed;
-    top: 0;
+    top: var(--nav-total-height);
     right: 40px;
     width: 96px;
-    height: 180px;
+    height: 96px;
     z-index: 998;
     pointer-events: none;
     image-rendering: pixelated;
+    overflow: hidden;
 }
 
 .top-pipe::before {
     content: '';
     position: absolute;
+    top: -56px;
     width: 8px;
     height: 8px;
     background: #00a651;
@@ -1955,6 +1960,13 @@ a:hover {
 }
 
 .hero-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
     background-color: #5c94fc;
 }
 
@@ -2536,7 +2548,7 @@ a:hover {
 /* Lives Counter - Top Left */
 .mario-lives-hud {
     position: fixed;
-    top: 90px;
+    top: calc(var(--nav-total-height) + 10px);
     left: 20px;
     display: flex;
     gap: 12px;
@@ -2546,7 +2558,7 @@ a:hover {
 /* XP/Progress Bar - Top Center */
 .mario-xp-bar-hud {
     position: fixed;
-    top: 90px;
+    top: calc(var(--nav-total-height) + 10px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -2660,13 +2672,13 @@ a:hover {
 /* Score and Coin - Top Right */
 .mario-score-hud {
     position: fixed;
-    top: 90px;
+    top: calc(var(--nav-total-height) + 10px);
     right: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .mario-score-text {
@@ -2678,9 +2690,13 @@ a:hover {
 
 /* Hover Coin (spins on hover) */
 .mario-hover-coin {
+    --coin-scale: 1;
     width: 40px;
     height: 40px;
-    position: relative;
+    position: fixed;
+    top: calc(var(--nav-total-height) + 104px);
+    right: 68px;
+    z-index: 997;
     image-rendering: pixelated;
     transition: transform 0.3s ease;
 }
@@ -2821,11 +2837,11 @@ a:hover {
 
 @keyframes coin-fall {
     0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(var(--coin-scale, 1));
         opacity: 1;
     }
     100% {
-        transform: translateY(calc(100vh - 100px)) scale(1);
+        transform: translateY(calc(100vh - 100px)) scale(var(--coin-scale, 1));
         opacity: 0;
     }
 }
@@ -2842,63 +2858,60 @@ a:hover {
 /* Responsive HUD */
 @media (max-width: 768px) {
     .mario-lives-hud {
-        top: 80px;
         left: 10px;
         gap: 8px;
     }
-    
+
     .mario-life-icon {
         width: 20px;
         height: 20px;
     }
-    
+
     .mario-xp-bar-hud {
-        top: 140px;
-        left: 50%;
-        transform: translateX(-50%);
+        /* Stack below lives/score row on mobile */
+        top: calc(var(--nav-total-height) + 40px);
     }
-    
+
     .mario-xp-track {
         width: 250px;
         height: 24px;
         border-radius: 12px;
     }
-    
+
     .mario-xp-fill {
         border-radius: 8px;
     }
-    
+
     .mario-xp-label {
         font-size: 12px;
         letter-spacing: 1px;
     }
-    
+
     .mario-score-hud {
-        top: 80px;
         right: 10px;
     }
-    
+
     .mario-score-text {
         font-size: 10px;
     }
-    
+
     .mario-mystery-scroll-box {
         bottom: 60px;
         left: 15px;
         width: 48px;
         height: 48px;
     }
-    
+
     .mystery-box-arrow {
         font-size: 24px;
     }
-    
-    /* Hover coin positioning on mobile */
+
+    /* Hover coin — scale to match pipe, center under it */
     .mario-hover-coin {
-        width: 32px;
-        height: 32px;
-        top: 140px !important;
-        right: 15px !important;
+        --coin-scale: 0.75;
+        transform: scale(0.75);
+        top: calc(var(--nav-total-height) + 78px);
+        right: 36px;
     }
 }
 
@@ -3711,16 +3724,13 @@ a:hover {
     /* Pipes - make smaller on mobile */
     .bottom-pipe {
         right: 20px;
-        width: 72px;
-        height: 150px;
         transform: scale(0.75);
         transform-origin: bottom right;
     }
 
     .top-pipe {
         right: 20px;
-        width: 72px;
-        height: 135px;
+        height: 96px;
         transform: scale(0.75);
         transform-origin: top right;
     }
@@ -3886,11 +3896,14 @@ a:hover {
     .bottom-pipe {
         right: 10px;
         transform: scale(0.6);
+        transform-origin: bottom right;
     }
 
     .top-pipe {
         right: 10px;
+        height: 96px;
         transform: scale(0.6);
+        transform-origin: top right;
     }
 
     /* Theme toggle */
@@ -4038,6 +4051,18 @@ a:hover {
     }
 }
 
+/* Reduce GPU memory usage on mobile */
+@media (max-width: 768px) {
+    .cluster-cloud {
+        transition: none;
+        will-change: auto;
+    }
+
+    .spinning-coin {
+        transition: none;
+    }
+}
+
 /* Additional mobile-specific improvements */
 @media (max-width: 768px) {
     /* Improve text readability on mobile */
@@ -4164,12 +4189,12 @@ a:hover {
         font-size: 20px;
     }
     
-    /* Hover coin on small mobile */
+    /* Hover coin — scale to match pipe, center under it */
     .mario-hover-coin {
-        width: 28px;
-        height: 28px;
-        top: 130px !important;
-        right: 10px !important;
+        --coin-scale: 0.6;
+        transform: scale(0.6);
+        top: calc(var(--nav-total-height) + 62px);
+        right: 19px;
     }
 }
 
