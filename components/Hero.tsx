@@ -84,8 +84,8 @@ export function Hero() {
                     const x = (col * spacing) + offsetX;
                     const y = row * spacing;
 
-                    coin.style.left = x + 'px';
-                    coin.style.top = y + 'px';
+                    coin.style.left = (x - 14) + 'px';
+                    coin.style.top = (y - 14) + 'px';
                     coin.style.animationDelay = (Math.random() * 1.2) + 's';
 
                     coinsRef.current.appendChild(coin);
