@@ -95,7 +95,7 @@ export function Navigation() {
                             height: '3px',
                             backgroundColor: '#ffffff',
                             transition: 'all 0.3s ease',
-                            transform: isMenuOpen ? 'rotate(45deg) translate(7px, 7px)' : 'none',
+                            transform: isMenuOpen ? 'rotate(45deg) translate(0px, 8.5px)' : 'none',
                         }}></span>
                         <span style={{
                             display: 'block',
@@ -111,7 +111,7 @@ export function Navigation() {
                             height: '3px',
                             backgroundColor: '#ffffff',
                             transition: 'all 0.3s ease',
-                            transform: isMenuOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none',
+                            transform: isMenuOpen ? 'rotate(-45deg) translate(0px, -8.5px)' : 'none',
                         }}></span>
                     </div>
                 </button>
