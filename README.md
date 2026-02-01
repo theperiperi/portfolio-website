@@ -14,6 +14,16 @@ This portfolio website serves as a digital space to highlight my work, skills, a
 - **Responsive Design**: Fully optimized for desktop, tablet, and mobile devices
 - **Dark Mode**: Toggle between light and dark themes for comfortable viewing
 
+## Why it looks like this
+
+I've started and abandoned like 10 portfolio sites. Each time I'd get halfway through, realize it was too formal or too content-heavy, and didn't actually represent me as a person — so I'd drop it. This time I wanted something that actually resonated with me and told a story. So enter mario!
+
+Every visual element on this site is CSS pixel art. The coins, the pipes, the clouds, the book icon, the computer icon — all of it. No image files, no SVGs, no icon libraries. Each one is a `div` with a `::before` pseudo-element drawing individual pixels using `box-shadow`. The coin spin is `scaleX` going from 1 to 0 and back with `steps(8)` to keep it crunchy and 8-bit.
+
+The cloud animation is inspired by my favorite game Two Dots. It has this thing where clouds part as you progress through a level and I always wanted to try to make something just as cool and what better place that a portfolio site. It generates 30 layers of clouds — 450 elements on desktop — each drifting in a random direction, clearing at different scroll speeds so it feels like a parallax reveal. On mobile it drops to 10 layers so your phone doesn't melt.
+
+~5,400 lines of CSS, no Tailwind, no Bootstrap, no CSS-in-JS. Just vanilla CSS with custom properties. Light/dark mode is a single data-attribute toggle.
+
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) with TypeScript
@@ -126,4 +136,4 @@ If you use this template, I'd love to see what you create! Feel free to tag me o
 
 **Built with ❤️ and 🍪s**
 
-*Last updated: November 2025*
+*Last updated: February 2026*
