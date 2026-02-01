@@ -4217,7 +4217,6 @@ a:hover {
     height: 28px;
     image-rendering: pixelated;
     animation: coin-spin-continuous 1.2s steps(8) infinite;
-    transform: translate(-50%, -50%); /* Center the coin on its position */
     opacity: 1; /* Start fully visible */
     transition: opacity 0.3s ease-out;
 }
