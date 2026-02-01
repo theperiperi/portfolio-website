@@ -40,7 +40,7 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
     const nextExperience = currentIndex < experiences.length - 1 ? experiences[currentIndex + 1] : null;
 
     return (
-        <main style={{ paddingTop: '80px' }}>
+        <main style={{ paddingTop: '160px' }}>
             <section className="section">
                 <div className="container" style={{ maxWidth: '900px' }}>
                     {/* Header */}
