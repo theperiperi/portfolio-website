@@ -1,21 +1,52 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export function MarioHUD() {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [coinFalling, setCoinFalling] = useState(false);
 
+    // Measure nav height and set CSS variable so HUD positions adapt
+    const updateNavHeight = useCallback(() => {
+        const nav = document.querySelector('.nav') as HTMLElement | null;
+        if (nav) {
+            // Include box-shadow (4px visual extension below border)
+            const height = nav.offsetHeight + 4;
+            document.documentElement.style.setProperty('--nav-total-height', `${height}px`);
+        }
+    }, []);
+
     useEffect(() => {
-        const handleScroll = () => {
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            setScrollProgress(Math.min(progress, 100));
+        // Measure once on mount, and on resize (nav may reflow)
+        updateNavHeight();
+
+        let resizeTimer: ReturnType<typeof setTimeout>;
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(updateNavHeight, 200);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        window.addEventListener('resize', handleResize);
+
+        let rafId: number | null = null;
+        const handleScroll = () => {
+            if (rafId !== null) return;
+            rafId = requestAnimationFrame(() => {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / totalHeight) * 100;
+                setScrollProgress(Math.min(progress, 100));
+                rafId = null;
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(resizeTimer);
+            window.removeEventListener('scroll', handleScroll);
+            if (rafId !== null) cancelAnimationFrame(rafId);
+        };
+    }, [updateNavHeight]);
 
     const handleScrollToTop = () => {
         setCoinFalling(true);
@@ -57,15 +88,9 @@ export function MarioHUD() {
             </div>
             
             {/* Coin below the top pipe */}
-            <div 
+            <div
                 className={`mario-hover-coin ${coinFalling ? 'falling' : ''}`}
                 title="Collected coins"
-                style={{
-                    position: 'fixed',
-                    top: '160px',
-                    right: '60px',
-                    zIndex: 1000
-                }}
             ></div>
 
             {/* Mystery Box Scroll Button - Bottom Left */}
