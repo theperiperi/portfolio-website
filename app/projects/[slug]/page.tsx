@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
     return (
-        <main style={{ paddingTop: '80px' }}>
+        <main style={{ paddingTop: '160px' }}>
             <section className="section">
                 <div className="container" style={{ maxWidth: '900px' }}>
                     {/* Header */}
