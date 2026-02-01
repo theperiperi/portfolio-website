@@ -1,75 +1,126 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 export function Hero() {
     const cloudsRef = useRef<HTMLDivElement>(null);
     const clusterRef = useRef<HTMLDivElement>(null);
     const coinsRef = useRef<HTMLDivElement>(null);
-    const [scrollY, setScrollY] = useState(0);
+    const lastWidthRef = useRef(0);
 
-    useEffect(() => {
-        // Generate spinning coins in an alternating/staggered pattern (like brickwork)
+    // Apply scroll-based transforms directly to DOM (no React state, no re-renders)
+    const applyScrollEffects = useCallback((sy: number) => {
+        // Coins: fade the container, hide entirely once invisible
         if (coinsRef.current) {
-            const heroWidth = window.innerWidth;
-            const heroHeight = window.innerHeight;
-            
-            const spacing = 80; // Distance between coins
-            const cols = Math.ceil(heroWidth / spacing) + 1;
-            const rows = Math.ceil(heroHeight / spacing) + 1;
-            
-            for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {
-                    const coin = document.createElement('div');
-                    coin.className = 'spinning-coin';
-                    
-                    // Staggered pattern: offset every other row by half the spacing
-                    const offsetX = (row % 2) * (spacing / 2);
-                    const x = (col * spacing) + offsetX;
-                    const y = row * spacing;
-                    
-                    coin.style.left = x + 'px';
-                    coin.style.top = y + 'px';
-                    
-                    // Randomize animation delay for variety
-                    coin.style.animationDelay = (Math.random() * 1.2) + 's';
-                    
-                    coinsRef.current.appendChild(coin);
+            const fadeProgress = Math.min(sy / 150, 1);
+            const opacity = Math.max(1 - fadeProgress, 0);
+            coinsRef.current.style.opacity = opacity.toString();
+            coinsRef.current.style.visibility = opacity === 0 ? 'hidden' : 'visible';
+        }
+
+        // Clouds: per-element transform + hide fully-cleared clouds
+        if (clusterRef.current) {
+            const clouds = clusterRef.current.children;
+            for (let idx = 0; idx < clouds.length; idx++) {
+                const cloud = clouds[idx] as HTMLElement;
+                const layer = parseInt(cloud.dataset.layer || '0');
+                const direction = cloud.dataset.direction;
+                const scrollDistance = parseFloat(cloud.dataset.scrollDistance || '200');
+                const layerStartScroll = layer * 30;
+
+                if (sy < layerStartScroll) {
+                    cloud.style.transform = 'translate(0, 0)';
+                    cloud.style.opacity = '1';
+                    cloud.style.visibility = 'visible';
+                } else {
+                    const progress = Math.min((sy - layerStartScroll) / scrollDistance, 1);
+
+                    if (progress >= 1) {
+                        // Fully cleared — remove from GPU composition entirely
+                        cloud.style.visibility = 'hidden';
+                    } else {
+                        const horizontalMove = progress * 120;
+                        const verticalMove = progress * 100;
+                        const opacity = Math.max(1 - progress, 0);
+
+                        cloud.style.opacity = opacity.toString();
+                        cloud.style.visibility = 'visible';
+                        cloud.style.transform = direction === 'left'
+                            ? `translate(-${horizontalMove}vw, -${verticalMove}vh)`
+                            : `translate(${horizontalMove}vw, -${verticalMove}vh)`;
+                    }
                 }
             }
+        }
+
+        // Hero overlay
+        const overlay = document.querySelector('.hero-overlay') as HTMLElement | null;
+        if (overlay) {
+            const overlayOpacity = sy === 0 ? 1 : Math.max(1 - (sy / 150), 0);
+            overlay.style.opacity = overlayOpacity.toString();
+            overlay.style.visibility = overlayOpacity === 0 ? 'hidden' : 'visible';
         }
     }, []);
 
     useEffect(() => {
-        // Generate MASSIVE cloud coverage that persists through entire page
-        if (clusterRef.current) {
-            // Create 30 layers to cover entire page scroll
-            const layers = 30;
-            const cloudsPerLayer = 15; // Heavy cloud density
-            
-            // Randomly assign each layer to move left or right
+        function generateCoins() {
+            if (!coinsRef.current) return;
+            coinsRef.current.innerHTML = '';
+
+            const heroWidth = window.innerWidth;
+            const heroHeight = window.innerHeight;
+            const isMobile = heroWidth < 768;
+
+            const spacing = isMobile ? 120 : 80;
+            const cols = Math.ceil(heroWidth / spacing) + 1;
+            const rows = Math.ceil(heroHeight / spacing) + 1;
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const coin = document.createElement('div');
+                    coin.className = 'spinning-coin';
+
+                    const offsetX = (row % 2) * (spacing / 2);
+                    const x = (col * spacing) + offsetX;
+                    const y = row * spacing;
+
+                    coin.style.left = x + 'px';
+                    coin.style.top = y + 'px';
+                    coin.style.animationDelay = (Math.random() * 1.2) + 's';
+
+                    coinsRef.current.appendChild(coin);
+                }
+            }
+        }
+
+        function generateClouds() {
+            if (!clusterRef.current) return;
+            clusterRef.current.innerHTML = '';
+
+            const isMobile = window.innerWidth < 768;
+            const layers = isMobile ? 10 : 30;
+            const cloudsPerLayer = isMobile ? 5 : 15;
+
             const layerDirections: ('left' | 'right')[] = [];
             for (let l = 0; l < layers; l++) {
                 layerDirections.push(Math.random() < 0.5 ? 'left' : 'right');
             }
-            
-            // Assign staggered scroll distances - layers clear throughout entire page scroll
+
             const layerScrollDistances: number[] = [];
             for (let l = 0; l < layers; l++) {
-                // Each layer clears at different scroll points from 80px to 3000px
-                layerScrollDistances.push(80 + (l * 100));
+                layerScrollDistances.push(80 + (l * (isMobile ? 200 : 100)));
             }
-            
+
             for (let layer = 0; layer < layers; layer++) {
                 const layerDirection = layerDirections[layer];
                 const scrollDistance = layerScrollDistances[layer];
-                
+
                 for (let i = 0; i < cloudsPerLayer; i++) {
                     const cloud = document.createElement('div');
                     cloud.className = 'cloud cluster-cloud';
-                    
-                    // Random size variation with more bias toward larger clouds
-                    const sizeVariant = Math.floor(Math.random() * 4);
+
+                    const maxVariant = isMobile ? 2 : 4;
+                    const sizeVariant = Math.floor(Math.random() * maxVariant);
                     if (sizeVariant === 0) {
                         cloud.classList.add('cloud-small');
                     } else if (sizeVariant === 1) {
@@ -79,32 +130,64 @@ export function Hero() {
                     } else {
                         cloud.classList.add('cloud-xlarge');
                     }
-                    
-                    // Position clouds with massive vertical and horizontal coverage
-                    const topPosition = layer * 60 - 150 + (Math.random() * 100 - 50);
-                    const leftPosition = (i * 8) - 18 + (Math.random() * 14 - 7);
-                    
+
+                    const topPosition = layer * (isMobile ? 100 : 60) - 150 + (Math.random() * 100 - 50);
+                    const leftPosition = (i * (isMobile ? 24 : 8)) - 18 + (Math.random() * 14 - 7);
+
                     cloud.style.top = topPosition + 'px';
                     cloud.style.left = leftPosition + '%';
-                    
-                    // Store layer info for animation
+
                     cloud.dataset.layer = layer.toString();
                     cloud.dataset.direction = layerDirection;
                     cloud.dataset.scrollDistance = scrollDistance.toString();
-                    
+
                     clusterRef.current.appendChild(cloud);
                 }
             }
         }
 
-        // Handle scroll to clear clouds layer by layer
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
+        // Generate on mount
+        lastWidthRef.current = window.innerWidth;
+        generateCoins();
+        generateClouds();
+        // Immediately apply scroll state so elements match current position
+        applyScrollEffects(window.scrollY);
+
+        // Only regenerate on actual width changes (ignore mobile address bar height changes)
+        let resizeTimer: ReturnType<typeof setTimeout>;
+        const handleResize = () => {
+            const newWidth = window.innerWidth;
+            if (newWidth === lastWidthRef.current) return;
+            lastWidthRef.current = newWidth;
+
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                generateCoins();
+                generateClouds();
+                applyScrollEffects(window.scrollY);
+            }, 300);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        window.addEventListener('resize', handleResize);
+
+        // Scroll handler — pure DOM updates via rAF, no React state
+        let rafId: number | null = null;
+        const handleScroll = () => {
+            if (rafId !== null) return;
+            rafId = requestAnimationFrame(() => {
+                applyScrollEffects(window.scrollY);
+                rafId = null;
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(resizeTimer);
+            window.removeEventListener('scroll', handleScroll);
+            if (rafId !== null) cancelAnimationFrame(rafId);
+        };
+    }, [applyScrollEffects]);
 
     const handleTitleHover = (e: React.MouseEvent<HTMLHeadingElement>) => {
         const target = e.currentTarget;
@@ -118,81 +201,12 @@ export function Hero() {
         }
     };
 
-    useEffect(() => {
-        // Fade out coins on scroll
-        if (coinsRef.current) {
-            const coins = coinsRef.current.querySelectorAll('.spinning-coin');
-            // Fade out coins over first 150px of scroll (faster fade out)
-            const fadeProgress = Math.min(scrollY / 150, 1);
-            const opacity = Math.max(1 - fadeProgress, 0);
-            
-            coins.forEach((coin) => {
-                (coin as HTMLElement).style.opacity = opacity.toString();
-            });
-        }
-        
-        // Staggered layer clearing: each layer moves at different scroll points
-        if (clusterRef.current) {
-            const clouds = clusterRef.current.querySelectorAll('.cluster-cloud');
-            
-            clouds.forEach((cloud) => {
-                const layer = parseInt((cloud as HTMLElement).dataset.layer || '0');
-                const direction = (cloud as HTMLElement).dataset.direction;
-                const scrollDistance = parseFloat((cloud as HTMLElement).dataset.scrollDistance || '200');
-                
-                // Calculate if this layer should be moving yet
-                const layerStartScroll = layer * 30; // Each layer starts moving 30px apart
-                
-                if (scrollY < layerStartScroll) {
-                    // Layer hasn't started moving yet
-                    (cloud as HTMLElement).style.transform = 'translate(0, 0)';
-                    (cloud as HTMLElement).style.opacity = '1';
-                } else {
-                    // Calculate progress for this specific layer
-                    const progress = Math.min((scrollY - layerStartScroll) / scrollDistance, 1);
-                    
-                    // Horizontal movement: entire layer moves together
-                    const horizontalMove = progress * 120; // Move 120vw to side for complete clearing
-                    
-                    // Vertical movement: move up
-                    const verticalMove = progress * 100; // Move 100vh up
-                    
-                    // Fade out as layer clears
-                    const opacity = Math.max(1 - progress, 0);
-                    (cloud as HTMLElement).style.opacity = opacity.toString();
-                    
-                    // Apply transform based on layer's assigned direction
-                    if (direction === 'left') {
-                        (cloud as HTMLElement).style.transform = 
-                            `translate(-${horizontalMove}vw, -${verticalMove}vh)`;
-                    } else {
-                        (cloud as HTMLElement).style.transform = 
-                            `translate(${horizontalMove}vw, -${verticalMove}vh)`;
-                    }
-                }
-            });
-        }
-    }, [scrollY]);
-
     return (
         <section id="home" className="hero section">
             {/* Spinning coins background */}
             <div className="hero-coins-container" ref={coinsRef}></div>
             {/* Full overlay that fades on scroll - adapts to theme */}
-            <div 
-                className="hero-overlay"
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    zIndex: 2,
-                    opacity: scrollY === 0 ? 1 : Math.max(1 - (scrollY / 150), 0),
-                    transition: 'opacity 0.1s ease-out',
-                    pointerEvents: 'none',
-                }}
-            />
+            <div className="hero-overlay" />
             {/* Dense cloud layers that clear horizontally on scroll */}
             <div className="cloud-cluster" ref={clusterRef}></div>
             <div className="hero-content" style={{ 
