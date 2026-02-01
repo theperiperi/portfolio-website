@@ -4,16 +4,6 @@ Welcome to my personal portfolio website! This is where I showcase my projects, 
 
 **🌐 Live Site**: [https://priyadharshini-sridhar.vercel.app/](https://priyadharshini-sridhar.vercel.app/)
 
-## About This Project
-
-This portfolio website serves as a digital space to highlight my work, skills, and professional experience. It features:
-
-- **Projects Showcase**: A curated collection of my best work with detailed case studies
-- **Experience Timeline**: My professional journey and accomplishments
-- **Nerd Wall**: A fun section showcasing my interests and personality
-- **Responsive Design**: Fully optimized for desktop, tablet, and mobile devices
-- **Dark Mode**: Toggle between light and dark themes for comfortable viewing
-
 ## Why it looks like this
 
 I've started and abandoned like 10 portfolio sites. Each time I'd get halfway through, realize it was too formal or too content-heavy, and didn't actually represent me as a person — so I'd drop it. This time I wanted something that actually resonated with me and told a story. So enter mario!
@@ -24,7 +14,17 @@ The cloud animation is inspired by my favorite game Two Dots. It has this thing 
 
 ~5,400 lines of CSS, no Tailwind, no Bootstrap, no CSS-in-JS. Just vanilla CSS with custom properties. Light/dark mode is a single data-attribute toggle.
 
-## 🛠️ Tech Stack
+## About This Project
+
+This portfolio website serves as a digital space to highlight my work, skills, and professional experience. It features:
+
+- **Projects Showcase**: A curated collection of my best work with detailed case studies
+- **Experience Timeline**: My professional journey and accomplishments
+- **Nerd Wall**: A fun section showcasing my interests and personality
+- **Responsive Design**: Fully optimized for desktop, tablet, and mobile devices
+- **Dark Mode**: Toggle between light and dark themes for comfortable viewing
+
+## Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) with TypeScript
 - **Styling**: CSS with custom animations
@@ -42,7 +42,7 @@ The cloud animation is inspired by my favorite game Two Dots. It has this thing 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio-website.git
+git clone https://github.com/theperiperi/portfolio-website.git
 cd portfolio-website
 ```
 
