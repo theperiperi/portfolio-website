@@ -209,77 +209,25 @@ export function Hero() {
             <div className="hero-overlay" />
             {/* Dense cloud layers that clear horizontally on scroll */}
             <div className="cloud-cluster" ref={clusterRef}></div>
-            <div className="hero-content" style={{ 
-                zIndex: 10, 
-                textAlign: 'center', 
-                padding: '0 var(--space-4)',
-                maxWidth: '100%',
-            }}>
+            <div className="hero-content">
                 <h1
                     className="hero-title hero-title-3d"
                     onMouseEnter={handleTitleHover}
                     data-text="PRIYA SRIDHAR"
-                    style={{
-                        fontSize: 'clamp(1.5rem, 8vw, var(--text-4xl))',
-                        marginBottom: 'var(--space-4)',
-                        position: 'relative',
-                        wordBreak: 'break-word',
-                        lineHeight: '1.2',
-                        WebkitTextStroke: '2px #000000',
-                    }}
                 >
                     PRIYA SRIDHAR
                 </h1>
-                <p
-                    className="hero-subtitle hero-subtitle-enhanced"
-                    style={{
-                        fontSize: 'clamp(10px, 3vw, var(--text-base))',
-                        color: 'var(--color-mario-green)',
-                        marginBottom: 'var(--space-6)',
-                        fontWeight: 'bold',
-                        textShadow: '2px 2px 0 #000000',
-                        lineHeight: '1.6',
-                        maxWidth: '90%',
-                        margin: '0 auto var(--space-6)',
-                    }}
-                >
+                <p className="hero-subtitle hero-subtitle-enhanced">
                     Software Engineer | AI/ML Enthusiast | Full-Stack Developer
                 </p>
-                <div className="hero-cta" style={{ 
-                    marginTop: 'var(--space-6)', 
-                    display: 'flex', 
-                    gap: 'var(--space-4)', 
-                    justifyContent: 'center', 
-                    flexWrap: 'wrap',
-                    padding: '0 var(--space-2)',
-                }}>
-                    <a href="#projects" className="btn btn-3d" style={{ 
-                        backgroundColor: 'var(--color-accent)', 
-                        color: '#ffffff',
-                        minWidth: '140px',
-                    }}>
+                <div className="hero-cta">
+                    <a href="#projects" className="btn btn-3d">
                         View Work
                     </a>
-                    <a href="#contact" className="btn btn-outline btn-3d" style={{
-                        minWidth: '140px',
-                    }}>
+                    <a href="#contact" className="btn btn-outline btn-3d">
                         Get in Touch
                     </a>
                 </div>
-                <style jsx>{`
-                    .hero-subtitle-enhanced {
-                        animation: glow-pulse 2s ease-in-out infinite;
-                    }
-                    
-                    @keyframes glow-pulse {
-                        0%, 100% {
-                            filter: drop-shadow(0 0 8px rgba(0, 166, 81, 0.6));
-                        }
-                        50% {
-                            filter: drop-shadow(0 0 20px rgba(0, 166, 81, 1));
-                        }
-                    }
-                `}</style>
             </div>
         </section>
     );
