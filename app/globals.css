@@ -2921,7 +2921,6 @@ a:hover {
     width: 40px;
     height: 40px;
     image-rendering: pixelated;
-    animation: star-twinkle 2s ease-in-out infinite;
     z-index: 3;
 }
 

@@ -128,11 +128,11 @@ export function Navigation() {
                     </li>
                     <li>
                         <Link
-                            href="/nerd-wall"
-                            className={`nav-link ${isActive('/nerd-wall') ? 'active' : ''}`}
-                            onClick={() => setIsMenuOpen(false)}
+                            href="/#contact"
+                            className="nav-link"
+                            onClick={(e) => handleSectionClick(e, 'contact')}
                         >
-                            Nerd Wall
+                            Contact
                         </Link>
                     </li>
                     <li>
@@ -151,15 +151,6 @@ export function Navigation() {
                             onClick={(e) => handleSectionClick(e, 'experience')}
                         >
                             Experience
-                        </Link>
-                    </li>
-                    <li>
-                        <Link 
-                            href="/#contact" 
-                            className="nav-link"
-                            onClick={(e) => handleSectionClick(e, 'contact')}
-                        >
-                            Contact
                         </Link>
                     </li>
                 </ul>
